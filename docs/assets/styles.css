@@ -42,17 +42,27 @@
 :root[data-style="ascii"] .button,
 :root[data-style="ascii"] .button:link,
 :root[data-style="ascii"] .button:visited {
-  color: #ffffff;
-  background: #148f57;
-  border-color: #148f57;
+  color: #ffffff !important;
+  background: #148f57 !important;
+  border-color: #148f57 !important;
 }
 :root[data-style="ascii"] .button:hover,
 :root[data-style="ascii"] .button:focus-visible {
-  color: #ffffff;
-  background: #0f7647;
-  border-color: #0f7647;
+  color: #ffffff !important;
+  background: #0f7647 !important;
+  border-color: #0f7647 !important;
 }
-:root[data-style="ascii"][data-ascii-mode="dark"] :is(.button-secondary, .button-secondary:link, .button-secondary:visited, .topbar a, .footer a, .page-panel a, .card a:not(.button)) { color: #d9ffe7; }
+:root[data-style="ascii"][data-ascii-mode="light"] :is(.button-secondary, .button-secondary:link, .button-secondary:visited, .ascii-theme-toggle-btn) {
+  color: #173f96 !important;
+  background: #ffffff !important;
+  border-color: #173f96 !important;
+}
+:root[data-style="ascii"][data-ascii-mode="dark"] :is(.button-secondary, .button-secondary:link, .button-secondary:visited, .ascii-theme-toggle-btn) {
+  color: #d9ffe7 !important;
+  background: #071108 !important;
+  border-color: #58ff72 !important;
+}
+:root[data-style="ascii"][data-ascii-mode="dark"] :is(.topbar a, .footer a, .page-panel a, .card a:not(.button):not(.button-secondary)) { color: #d9ffe7; }
 :root[data-style="ascii"] .tools-grid {
   display: grid;
   gap: 16px;
@@ -88,29 +98,32 @@
 
 .sticker-new{
   position:absolute;
-  top:12px;
-  right:12px;
+  top:14px;
+  right:14px;
   z-index:3;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:4px 10px;
-  font-weight:800;
+  min-height:36px;
+  padding:6px 14px;
+  font-weight:900;
   letter-spacing:0.08em;
   font-size:12px;
-  border:2px solid currentColor;
-  border-radius:999px;
-  background:#ffd400;
+  line-height:1;
+  border:3px solid currentColor;
+  border-radius:2px;
+  background:#ffe066;
   color:#0b0b0b;
   transform:rotate(-7deg);
-  box-shadow: 0 6px 0 rgba(0,0,0,0.12);
+  box-shadow: 0 5px 0 rgba(0,0,0,0.12);
   pointer-events:none;
+  text-transform:uppercase;
 }
 
 .sticker-new::after{
   content:"";
   position:absolute;
-  inset:3px;
-  border:1px dashed rgba(0,0,0,0.35);
-  border-radius:999px;
+  inset:5px;
+  border:2px solid rgba(11,11,11,0.6);
+  border-radius:1px;
 }
