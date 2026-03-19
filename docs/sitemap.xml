@@ -7,6 +7,21 @@
     <loc>https://lab.abvx.xyz/tools/agentsgen/</loc>
   </url>
   <url>
+    <loc>https://lab.abvx.xyz/tools/agentsgen-init/</loc>
+  </url>
+  <url>
+    <loc>https://lab.abvx.xyz/tools/agentsgen-update/</loc>
+  </url>
+  <url>
+    <loc>https://lab.abvx.xyz/tools/agentsgen-pack/</loc>
+  </url>
+  <url>
+    <loc>https://lab.abvx.xyz/tools/agentsgen-check/</loc>
+  </url>
+  <url>
+    <loc>https://lab.abvx.xyz/tools/agentsgen-detect/</loc>
+  </url>
+  <url>
     <loc>https://lab.abvx.xyz/tools/abvx-shortener/</loc>
   </url>
   <url>
