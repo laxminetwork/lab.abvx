@@ -1,83 +1,93 @@
 # ABVX Lab
 
+A static hub of ABVX developer tools, with per-tool pages for discovery and links.
+
+Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
+
 <img src="docs/assets/og.svg" alt="ABVX Lab cover" width="100%" />
 
-Static GitHub Pages hub for ABVX developer tools, published at [lab.abvx.xyz](https://lab.abvx.xyz/).
+## Tools
 
-## What this repo is
+A short list of what’s currently in the lab (each tool has a page + links).
 
-ABVX Lab is a small static catalog for developer tools related to AI-assisted coding.
+New: git-tweet — tweet-sized release notes from git changes.
 
-Current shape:
-- Home page with a tools grid in `docs/index.html`
-- Per-tool SEO pages in `docs/tools/<slug>/index.html`
-- GitHub Pages deployment from `/docs` on `main`
-- AsciiTheme as the visual baseline, with a small local overrides layer
+- **agentsgen** — safe repo docs toolchain for coding agents (AGENTS.md/RUNBOOK.md + PR Guard + LLMO Pack)  
+  https://lab.abvx.xyz/tools/agentsgen/
 
-## Structure
+- **agentsgen init** — bootstrap AGENTS.md/RUNBOOK.md + .agentsgen.json (safe markers)  
+  https://lab.abvx.xyz/tools/agentsgen-init/
 
-- `docs/index.html` - home page and tools grid
-- `docs/assets/asciitheme.css` - vendored AsciiTheme base preset
-- `docs/assets/ascii-theme.js` - vendored AsciiTheme UMD toggle script
-- `docs/assets/styles.css` - Lab-specific overrides only
-- `docs/assets/og.svg` - README / project cover art
-- `docs/assets/og.png` - OG image used by pages
-- `docs/assets/logo.png` - header logo asset
-- `docs/tools/<slug>/index.html` - per-tool landing / SEO pages
-- `docs/robots.txt` - crawler rules
-- `docs/sitemap.xml` - published URL list
+- **agentsgen update** — marker-only updates; never overwrite handwritten docs  
+  https://lab.abvx.xyz/tools/agentsgen-update/
 
-## Tool pages
+- **agentsgen pack** — generate AI/LLMO docs bundle; supports --check and --print-plan  
+  https://lab.abvx.xyz/tools/agentsgen-pack/
 
-Current tool URLs:
-- `/tools/agentsgen/`
-- `/tools/agentsgen-init/`
-- `/tools/agentsgen-update/`
-- `/tools/agentsgen-pack/`
-- `/tools/agentsgen-check/`
-- `/tools/agentsgen-detect/`
-- `/tools/abvx-shortener/`
-- `/tools/sitelen-layer-plugin/`
-- `/tools/git-tweet/`
-- `/tools/asciitheme/`
+- **agentsgen check** — validate docs/config/markers; non-zero exit code on drift (doctor alias)  
+  https://lab.abvx.xyz/tools/agentsgen-check/
+
+- **agentsgen detect** — heuristic repo scan (no execution); JSON output supported  
+  https://lab.abvx.xyz/tools/agentsgen-detect/
+
+- **ABVX Shortener** — minimal URL shortener (Cloudflare Worker + KV)  
+  https://lab.abvx.xyz/tools/abvx-shortener/
+
+- **sitelen-layer-plugin** — sitelen-layer rendering plugin (toki pona tooling)  
+  https://lab.abvx.xyz/tools/sitelen-layer-plugin/
+
+- **git-tweet** — turn git changes into tweet-sized release notes (with context + links)  
+  https://lab.abvx.xyz/tools/git-tweet/
+
+- **AsciiTheme** — tiny CSS theme kit for clean, readable dev pages  
+  https://lab.abvx.xyz/tools/asciitheme/
+
+
+## What's inside
+
+- Home page: `docs/index.html`
+- Tool pages: `docs/tools/<slug>/index.html`
+- SEO basics: `docs/robots.txt` and `docs/sitemap.xml`
+- Theme assets: `docs/assets/asciitheme.css`, `docs/assets/ascii-theme.js`, `docs/assets/styles.css`
+
+## Tool pages (routing)
+
+- [agentsgen](https://lab.abvx.xyz/tools/agentsgen/)
+- [agentsgen-init](https://lab.abvx.xyz/tools/agentsgen-init/)
+- [agentsgen-update](https://lab.abvx.xyz/tools/agentsgen-update/)
+- [agentsgen-pack](https://lab.abvx.xyz/tools/agentsgen-pack/)
+- [agentsgen-check](https://lab.abvx.xyz/tools/agentsgen-check/)
+- [agentsgen-detect](https://lab.abvx.xyz/tools/agentsgen-detect/)
+- [abvx-shortener](https://lab.abvx.xyz/tools/abvx-shortener/)
+- [sitelen-layer-plugin](https://lab.abvx.xyz/tools/sitelen-layer-plugin/)
+- [git-tweet](https://lab.abvx.xyz/tools/git-tweet/)
+- [asciitheme](https://lab.abvx.xyz/tools/asciitheme/)
 
 ## Visual system
 
-Lab uses AsciiTheme as the foundation, not a redesign from scratch.
+ABVX Lab uses a split setup based on AsciiTheme:
 
-Keep this split:
-- `docs/assets/asciitheme.css` stays a vendored copy of AsciiTheme base preset
-- `docs/assets/ascii-theme.js` stays the vendored toggle script
-- `docs/assets/styles.css` is the only place for Lab-specific polish
+- `docs/assets/asciitheme.css` is a vendored copy of the AsciiTheme base preset
+- `docs/assets/ascii-theme.js` is the vendored theme-toggle script
+- `docs/assets/styles.css` is the Lab-only override layer
+- Do not rebuild the baseline locally in `styles.css`
 
-Do not reimplement the baseline in local CSS.
+## How to add a new tool
 
-## Add a new tool
+Use this checklist:
 
-1. Copy an existing tool folder from `docs/tools/<slug>/`.
-2. Update the page title, one-liner, links, bullets, metadata, and canonical URL.
-3. Add the new card to `docs/index.html`.
-4. Move the newly added card to the first position in the home grid.
-5. Give the newly added card the `NEW` sticker.
-6. Remove the `NEW` sticker from the previous card so only one tool is marked `NEW` at a time.
-7. If the tool has a live site, add its `Live` button on both the home card and the tool page.
-8. Add the new published URL to `docs/sitemap.xml`.
-
-## Editing rules
-
-When updating this site:
-- Keep URLs and slugs stable unless there is an explicit migration.
-- Prefer small HTML changes and put visual tweaks in `docs/assets/styles.css`.
-- Keep footer markup identical across home and tool pages.
-- Keep the theme toggle wiring intact.
-- If you change static asset URLs, use a cache-busting query suffix in HTML so GitHub Pages clients refresh reliably.
+- Create a new tool page from an existing `docs/tools/<slug>/index.html`
+- Update the title, one-liner, links, metadata, and canonical URL
+- Add the card to `docs/index.html`
+- Move the new card to the first position on the home grid
+- Add the `NEW` sticker to the new card and remove it from the previous one so only one tool is marked `NEW`
+- Add the tool URL to `docs/sitemap.xml`
+- If the tool has a live site, add its `Live` link on both the home card and the tool page
 
 ## Deploy
 
-GitHub Pages should publish from `/docs` on `main`.
+GitHub Pages publishes this site from `/docs` on `main`.
 
-In practice:
-- commit to `main`
-- push to GitHub
-- wait for Pages/CDN refresh
-- if static assets changed, verify the current cache-busting suffix is present in HTML
+Flow: commit -> push -> wait for Pages.
+
+If you change asset URLs or ship a static asset that browsers may cache aggressively, add or update the cache-busting query suffix in the HTML.
