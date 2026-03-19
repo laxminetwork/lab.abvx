@@ -41,7 +41,17 @@
 :root[data-style="ascii"] .ascii-theme-toggle-btn { min-height: 2.25rem; padding: 0.55rem 0.85rem; }
 :root[data-style="ascii"] .button,
 :root[data-style="ascii"] .button:link,
-:root[data-style="ascii"] .button:visited { color: #ffffff; }
+:root[data-style="ascii"] .button:visited {
+  color: #ffffff;
+  background: #148f57;
+  border-color: #148f57;
+}
+:root[data-style="ascii"] .button:hover,
+:root[data-style="ascii"] .button:focus-visible {
+  color: #ffffff;
+  background: #0f7647;
+  border-color: #0f7647;
+}
 :root[data-style="ascii"][data-ascii-mode="dark"] :is(.button-secondary, .button-secondary:link, .button-secondary:visited, .topbar a, .footer a, .page-panel a, .card a:not(.button)) { color: #d9ffe7; }
 :root[data-style="ascii"] .tools-grid {
   display: grid;
