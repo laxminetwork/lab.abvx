@@ -1,0 +1,22 @@
+# ABVX Lab
+
+Static GitHub Pages hub for ABVX developer tools.
+
+## Structure
+
+- `docs/index.html` - home page with the tools grid
+- `docs/assets/styles.css` - shared site styling
+- `docs/tools/<slug>/index.html` - per-tool SEO page
+- `docs/robots.txt` and `docs/sitemap.xml` - basic crawl metadata
+
+## Add a new tool
+
+1. Copy an existing tool folder from `docs/tools/<slug>/`.
+2. Update the page title, one-liner, links, bullets, and metadata.
+3. Add the new card to `docs/index.html`.
+4. Add the new URL to `docs/sitemap.xml`.
+5. If the tool has a live site, add its `Live` button on the card and tool page.
+
+## Deploy
+
+GitHub Pages should publish from `/docs` on `main`.

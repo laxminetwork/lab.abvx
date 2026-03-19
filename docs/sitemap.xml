@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://lab.abvx.xyz/</loc>
+  </url>
+  <url>
+    <loc>https://lab.abvx.xyz/tools/agentsgen/</loc>
+  </url>
+  <url>
+    <loc>https://lab.abvx.xyz/tools/abvx-shortener/</loc>
+  </url>
+  <url>
+    <loc>https://lab.abvx.xyz/tools/sitelen-layer-plugin/</loc>
+  </url>
+  <url>
+    <loc>https://lab.abvx.xyz/tools/git-tweet/</loc>
+  </url>
+  <url>
+    <loc>https://lab.abvx.xyz/tools/asciitheme/</loc>
+  </url>
+</urlset>
