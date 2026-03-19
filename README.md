@@ -2,6 +2,8 @@
 
 A static hub of ABVX developer tools, with per-tool pages for discovery and links.
 
+This repo contains the published GitHub Pages site, the per-tool landing pages, and the small maintenance workflow for keeping the catalog current.
+
 Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 <img src="docs/assets/og.svg" alt="ABVX Lab cover" width="100%" />
