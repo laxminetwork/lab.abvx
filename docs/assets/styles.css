@@ -172,20 +172,22 @@
 :root[data-style="ascii"] .footer-title { font-weight:700; margin-bottom:.15rem; }
 :root[data-style="ascii"] .footer-note { opacity:.9; }
 
-:root[data-style="ascii"] .social-icons { display:flex; gap:.65rem; align-items:center; }
+:root[data-style="ascii"] .social-icons { display:flex; gap:.55rem; align-items:center; }
 :root[data-style="ascii"] .social-icons a {
   display:inline-flex;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   align-items:center;
   justify-content:center;
   border:1px solid currentColor;
   text-decoration:none;
+  opacity:.92;
 }
-:root[data-style="ascii"] .social-icons svg { width: 20px; height: 20px; }
+:root[data-style="ascii"] .social-icons svg { width: 16px; height: 16px; display:block; }
 :root[data-style="ascii"] .social-icons a:hover {
-  box-shadow: 0 0 0 2px rgba(24,160,94,.18), 0 0 20px rgba(24,160,94,.18);
+  box-shadow: 0 0 0 2px rgba(24,160,94,.16), 0 0 14px rgba(24,160,94,.16);
   transform: translateY(-1px);
+  opacity:1;
 }
 
 @media (max-width: 720px) {
