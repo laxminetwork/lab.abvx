@@ -172,18 +172,35 @@
 :root[data-style="ascii"] .footer-title { font-weight:700; margin-bottom:.15rem; }
 :root[data-style="ascii"] .footer-note { opacity:.9; }
 
-:root[data-style="ascii"] .social-icons { display:flex; gap:.55rem; align-items:center; }
+:root[data-style="ascii"] .social-icons { display:flex; gap:.55rem; align-items:center; flex-wrap:wrap; }
 :root[data-style="ascii"] .social-icons a {
-  display:inline-flex;
+  display:inline-flex !important;
+  flex: 0 0 auto;
   width: 30px;
+  min-width: 30px;
+  max-width: 30px;
   height: 30px;
+  min-height: 30px;
+  max-height: 30px;
   align-items:center;
   justify-content:center;
   border:1px solid currentColor;
   text-decoration:none;
   opacity:.92;
+  line-height:0;
+  overflow:hidden;
+  padding:0;
 }
-:root[data-style="ascii"] .social-icons svg { width: 16px; height: 16px; display:block; }
+:root[data-style="ascii"] .social-icons svg {
+  width: 16px !important;
+  min-width: 16px;
+  max-width: 16px;
+  height: 16px !important;
+  min-height: 16px;
+  max-height: 16px;
+  display:block;
+  flex: 0 0 auto;
+}
 :root[data-style="ascii"] .social-icons a:hover {
   box-shadow: 0 0 0 2px rgba(24,160,94,.16), 0 0 14px rgba(24,160,94,.16);
   transform: translateY(-1px);
