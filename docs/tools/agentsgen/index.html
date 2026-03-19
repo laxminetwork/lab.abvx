@@ -29,6 +29,7 @@
         <a href="../../index.html#tools">Tools</a>
         <a href="https://github.com/markoblogo">GitHub profile</a>
       </nav>
+      <div class="header-controls"></div>
     </header>
         <main class="page-layout">
           <section class="hero-panel">
@@ -60,5 +61,15 @@
     </footer>
       </div>
     </div>
+    <script src="../../assets/ascii-theme.js"></script>
+    <script>
+      AsciiTheme.initAsciiTheme({
+        base: true,
+        managedMode: true,
+        addThemeToggle: true,
+        addStyleToggle: false,
+        mountSelector: ".header-controls",
+      });
+    </script>
   </body>
 </html>
