@@ -1,5 +1,10 @@
 # ABVX Lab
 
+Principles (why this hub exists):
+- Minimal, maintained, verifiable repo context beats auto-generated “context files”.
+- Instrumented truth > prose (check/status/pack --check).
+Manifest: https://agentsmd.abvx.xyz/
+
 A static hub of ABVX developer tools, with per-tool pages for discovery and links.
 
 This repo contains the published GitHub Pages site, the per-tool landing pages, and the small maintenance workflow for keeping the catalog current.
