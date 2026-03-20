@@ -12,7 +12,10 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 A short list of what’s currently in the lab (each tool has a page + links).
 
-New: agentsgen presets — copy-paste repo setup for common stacks with explicit commands.
+New: agentsgen snippets — canonical README snippet extraction with CI drift checks.
+
+- **agentsgen snippets** — extract canonical README snippets with deterministic CI drift checks  
+  https://lab.abvx.xyz/tools/agentsgen-snippets/
 
 - **agentsgen presets** — copy-paste repo setup for common stacks (no autodetect, explicit commands)  
   https://lab.abvx.xyz/tools/agentsgen-presets/
@@ -68,6 +71,7 @@ New: agentsgen presets — copy-paste repo setup for common stacks with explicit
 - [agentsgen-detect](https://lab.abvx.xyz/tools/agentsgen-detect/)
 - [agentsgen-status](https://lab.abvx.xyz/tools/agentsgen-status/)
 - [agentsgen-presets](https://lab.abvx.xyz/tools/agentsgen-presets/)
+- [agentsgen-snippets](https://lab.abvx.xyz/tools/agentsgen-snippets/)
 - [abvx-shortener](https://lab.abvx.xyz/tools/abvx-shortener/)
 - [sitelen-layer-plugin](https://lab.abvx.xyz/tools/sitelen-layer-plugin/)
 - [git-tweet](https://lab.abvx.xyz/tools/git-tweet/)
