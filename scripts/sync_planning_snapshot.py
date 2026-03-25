@@ -86,7 +86,9 @@ def build_page(snapshot: dict[str, object]) -> str:
         next_action_label = entry.get('next_action_label') or review_payload.get('next_action_label') or 'Next step'
         recommended_step = entry.get('recommended_operator_step') or review_payload.get('recommended_operator_step') or 'n/a'
         next_command = entry.get('next_shell_command') or review_payload.get('next_shell_command') or 'n/a'
-        full_sequence = '\n'.join(apply_sim.get('manual_steps', []))
+        manual_steps = apply_sim.get('manual_steps', [])
+        full_sequence = '\n'.join(manual_steps)
+        pr_command = manual_steps[-1] if manual_steps else 'n/a'
         unmapped = plan.get('unmapped', [])
         unmapped_html = ''
         if unmapped:
@@ -106,7 +108,9 @@ def build_page(snapshot: dict[str, object]) -> str:
             </ul>
             <div class="small-note">Copy next command:</div>
             <pre><code>{next_command}</code></pre>
-            <div class="small-note">Manual sequence:</div>
+            <div class="small-note">Copy PR command:</div>
+            <pre><code>{pr_command}</code></pre>
+            <div class="small-note">Copy full sequence:</div>
             <pre><code>{full_sequence}</code></pre>
             {unmapped_html}
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
