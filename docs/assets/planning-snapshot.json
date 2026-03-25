@@ -285,7 +285,24 @@
         "contract": true,
         "evidence": true,
         "verdict": true,
-        "verdict_status": "needs-review"
+        "verdict_status": "needs-review",
+        "decision": "review-ready",
+        "recommendation": "Review the captured evidence bundle before marking the task as pass.",
+        "ready_for_apply": false,
+        "evidence_status": "complete",
+        "blocking_count": 0,
+        "check_summary": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "recorded": 0
+        },
+        "artifact_summary": {
+          "total": 2,
+          "present": 2,
+          "missing": 0
+        }
       },
       "files": [
         "apply-simulation.json",

@@ -105,7 +105,17 @@ def main() -> int:
             top_ranked_html = f'<div class="small-note">Top ranked files:</div><ul class="bullet-list">{items}</ul>'
         proof_line = ''
         if proof_snapshot:
-            proof_line = f'<li>Proof loop: {proof_snapshot.get("status", "disabled")} (task {proof_snapshot.get("task_id") or "n/a"}, verdict {proof_snapshot.get("verdict_status", "none")})</li>'
+            proof_checks = proof_snapshot.get('check_summary', {}) if isinstance(proof_snapshot.get('check_summary'), dict) else {}
+            proof_artifacts = proof_snapshot.get('artifact_summary', {}) if isinstance(proof_snapshot.get('artifact_summary'), dict) else {}
+            recommendation = proof_snapshot.get('recommendation', '')
+            proof_line = (
+                f'<li>Proof loop: {proof_snapshot.get("status", "disabled")} '
+                f'(task {proof_snapshot.get("task_id") or "n/a"}, verdict {proof_snapshot.get("verdict_status", "none")}, decision {proof_snapshot.get("decision", "unknown")})</li>'
+                f'<li>Proof evidence: {proof_snapshot.get("evidence_status", "none")}; ready for apply: {str(proof_snapshot.get("ready_for_apply", False)).lower()}; blockers: {proof_snapshot.get("blocking_count", 0)}</li>'
+                f'<li>Proof checks: passed {proof_checks.get("passed", 0)}, failed {proof_checks.get("failed", 0)}, pending {proof_checks.get("pending", 0)}</li>'
+                f'<li>Proof artifacts: present {proof_artifacts.get("present", 0)} / total {proof_artifacts.get("total", 0)}</li>'
+                + (f'<li>Proof recommendation: {recommendation}</li>' if recommendation else '')
+            )
         sections.append(
             f'''<section class="page-panel">
             <h2>{card['repo']}</h2>

@@ -143,25 +143,64 @@ def load_proof_snapshot(*, repo_root: Path | None, proof_loop: dict[str, object]
     task_dir = repo_root / 'docs' / 'ai' / 'tasks' / task_id
     contract_path = task_dir / 'contract.md'
     evidence_path = task_dir / 'evidence.json'
+    evidence_generated_path = task_dir / 'evidence.generated.json'
     verdict_path = task_dir / 'verdict.json'
     verdict_generated_path = task_dir / 'verdict.generated.json'
     verdict_status = 'none'
+    decision = 'unknown'
+    recommendation = ''
+    ready_for_apply = False
+    evidence_status = 'none'
+    blocking_count = 0
+    check_summary: dict[str, object] = {}
+    artifact_summary: dict[str, object] = {}
+    evidence_source = evidence_path if evidence_path.exists() else evidence_generated_path
     verdict_source = verdict_path if verdict_path.exists() else verdict_generated_path
+    if evidence_source.exists():
+        try:
+            import json
+            evidence_payload = json.loads(evidence_source.read_text())
+            evidence_status = str(evidence_payload.get('evidence_status', 'none'))
+            raw_check_summary = evidence_payload.get('check_summary')
+            raw_artifact_summary = evidence_payload.get('artifact_summary')
+            if isinstance(raw_check_summary, dict):
+                check_summary = raw_check_summary
+            if isinstance(raw_artifact_summary, dict):
+                artifact_summary = raw_artifact_summary
+        except Exception:
+            evidence_status = 'unknown'
     if verdict_source.exists():
         try:
             import json
-            verdict_status = str(json.loads(verdict_source.read_text()).get('status', 'none'))
+            verdict_payload = json.loads(verdict_source.read_text())
+            verdict_status = str(verdict_payload.get('status', 'none'))
+            decision = str(verdict_payload.get('decision', 'unknown'))
+            recommendation = str(verdict_payload.get('recommendation', '') or '')
+            ready_for_apply = bool(verdict_payload.get('ready_for_apply', False))
+            raw_blocking_details = verdict_payload.get('blocking_details')
+            raw_blocking_items = verdict_payload.get('blocking_items')
+            if isinstance(raw_blocking_details, list):
+                blocking_count = len(raw_blocking_details)
+            elif isinstance(raw_blocking_items, list):
+                blocking_count = len(raw_blocking_items)
         except Exception:
             verdict_status = 'unknown'
-    present_count = sum([contract_path.exists(), evidence_path.exists(), verdict_source.exists()])
+    present_count = sum([contract_path.exists(), evidence_source.exists(), verdict_source.exists()])
     status = 'complete' if present_count == 3 else ('partial' if present_count else 'missing')
     return {
         'status': status,
         'task_id': task_id,
         'contract': contract_path.exists(),
-        'evidence': evidence_path.exists(),
+        'evidence': evidence_source.exists(),
         'verdict': verdict_source.exists(),
         'verdict_status': verdict_status,
+        'decision': decision,
+        'recommendation': recommendation,
+        'ready_for_apply': ready_for_apply,
+        'evidence_status': evidence_status,
+        'blocking_count': blocking_count,
+        'check_summary': check_summary,
+        'artifact_summary': artifact_summary,
     }
 
 
@@ -315,9 +354,20 @@ def build_page(snapshot: dict[str, object]) -> str:
                 )
             proof_html = ''
             if proof_snapshot:
+                proof_checks = proof_snapshot.get('check_summary', {}) if isinstance(proof_snapshot.get('check_summary'), dict) else {}
+                proof_artifacts = proof_snapshot.get('artifact_summary', {}) if isinstance(proof_snapshot.get('artifact_summary'), dict) else {}
+                recommendation = proof_snapshot.get('recommendation', '')
                 proof_html = (
                     f"<div class=\"small-note\">Proof loop: {proof_snapshot.get('status', 'disabled')}"
-                    f" (task {proof_snapshot.get('task_id') or 'n/a'}, verdict {proof_snapshot.get('verdict_status', 'none')})</div>"
+                    f" (task {proof_snapshot.get('task_id') or 'n/a'}, verdict {proof_snapshot.get('verdict_status', 'none')}, decision {proof_snapshot.get('decision', 'unknown')})</div>"
+                    f"<div class=\"small-note\">Proof evidence: {proof_snapshot.get('evidence_status', 'none')}; ready for apply: {str(proof_snapshot.get('ready_for_apply', False)).lower()}; blockers: {proof_snapshot.get('blocking_count', 0)}</div>"
+                    f"<div class=\"small-note\">Proof checks: passed {proof_checks.get('passed', 0)}, failed {proof_checks.get('failed', 0)}, pending {proof_checks.get('pending', 0)}</div>"
+                    f"<div class=\"small-note\">Proof artifacts: present {proof_artifacts.get('present', 0)} / total {proof_artifacts.get('total', 0)}</div>"
+                    + (
+                        f"<div class=\"small-note\">Recommendation: {recommendation}</div>"
+                        if recommendation
+                        else ''
+                    )
                 )
             cards.append(
                 f'''<section id="{card_slug}" class="page-panel">
