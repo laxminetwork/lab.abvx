@@ -124,13 +124,22 @@ def build_page(entries: list[dict[str, object]]) -> str:
             proof_checks = proof_snapshot.get('check_summary', {}) if isinstance(proof_snapshot.get('check_summary'), dict) else {}
             proof_artifacts = proof_snapshot.get('artifact_summary', {}) if isinstance(proof_snapshot.get('artifact_summary'), dict) else {}
             recommendation = proof_snapshot.get('recommendation', '')
+            blocking_details = proof_snapshot.get('blocking_details', []) if isinstance(proof_snapshot.get('blocking_details'), list) else []
+            blocker_line = ''
+            if blocking_details:
+                blocker_line = ''.join(
+                    f'<li>Proof blocker ({item.get("severity", "medium")}): {item.get("message", "unspecified blocker")}</li>'
+                    for item in blocking_details
+                    if isinstance(item, dict)
+                )
             proof_line = (
                 f'<li>Proof loop: {proof_snapshot.get("status", "disabled")} '
                 f'(task {proof_snapshot.get("task_id") or "n/a"}, verdict {proof_snapshot.get("verdict_status", "none")}, decision {proof_snapshot.get("decision", "unknown")})</li>'
-                f'<li>Proof evidence: {proof_snapshot.get("evidence_status", "none")}; ready for apply: {str(proof_snapshot.get("ready_for_apply", False)).lower()}; blockers: {proof_snapshot.get("blocking_count", 0)}</li>'
+                f'<li>Proof evidence: {proof_snapshot.get("evidence_status", "none")}; review ready: {str(proof_snapshot.get("review_ready", False)).lower()}; ready for apply: {str(proof_snapshot.get("ready_for_apply", False)).lower()}; blockers: {proof_snapshot.get("blocking_count", 0)}</li>'
                 f'<li>Proof checks: passed {proof_checks.get("passed", 0)}, failed {proof_checks.get("failed", 0)}, pending {proof_checks.get("pending", 0)}</li>'
                 f'<li>Proof artifacts: present {proof_artifacts.get("present", 0)} / total {proof_artifacts.get("total", 0)}</li>'
                 + (f'<li>Proof recommendation: {recommendation}</li>' if recommendation else '')
+                + blocker_line
             )
         cards.append(
             f'''<section class="page-panel">

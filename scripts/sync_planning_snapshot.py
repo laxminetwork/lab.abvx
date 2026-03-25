@@ -150,8 +150,10 @@ def load_proof_snapshot(*, repo_root: Path | None, proof_loop: dict[str, object]
     decision = 'unknown'
     recommendation = ''
     ready_for_apply = False
+    review_ready = False
     evidence_status = 'none'
     blocking_count = 0
+    blocking_details: list[dict[str, object]] = []
     check_summary: dict[str, object] = {}
     artifact_summary: dict[str, object] = {}
     evidence_source = evidence_path if evidence_path.exists() else evidence_generated_path
@@ -177,12 +179,18 @@ def load_proof_snapshot(*, repo_root: Path | None, proof_loop: dict[str, object]
             decision = str(verdict_payload.get('decision', 'unknown'))
             recommendation = str(verdict_payload.get('recommendation', '') or '')
             ready_for_apply = bool(verdict_payload.get('ready_for_apply', False))
+            review_ready = bool(verdict_payload.get('review_ready', False))
             raw_blocking_details = verdict_payload.get('blocking_details')
             raw_blocking_items = verdict_payload.get('blocking_items')
             if isinstance(raw_blocking_details, list):
                 blocking_count = len(raw_blocking_details)
+                blocking_details = [item for item in raw_blocking_details if isinstance(item, dict)]
             elif isinstance(raw_blocking_items, list):
                 blocking_count = len(raw_blocking_items)
+                blocking_details = [
+                    {'message': str(item), 'severity': 'medium', 'blocks_apply': True}
+                    for item in raw_blocking_items
+                ]
         except Exception:
             verdict_status = 'unknown'
     present_count = sum([contract_path.exists(), evidence_source.exists(), verdict_source.exists()])
@@ -197,8 +205,10 @@ def load_proof_snapshot(*, repo_root: Path | None, proof_loop: dict[str, object]
         'decision': decision,
         'recommendation': recommendation,
         'ready_for_apply': ready_for_apply,
+        'review_ready': review_ready,
         'evidence_status': evidence_status,
         'blocking_count': blocking_count,
+        'blocking_details': blocking_details,
         'check_summary': check_summary,
         'artifact_summary': artifact_summary,
     }
@@ -357,10 +367,19 @@ def build_page(snapshot: dict[str, object]) -> str:
                 proof_checks = proof_snapshot.get('check_summary', {}) if isinstance(proof_snapshot.get('check_summary'), dict) else {}
                 proof_artifacts = proof_snapshot.get('artifact_summary', {}) if isinstance(proof_snapshot.get('artifact_summary'), dict) else {}
                 recommendation = proof_snapshot.get('recommendation', '')
+                proof_blocking_details = proof_snapshot.get('blocking_details', []) if isinstance(proof_snapshot.get('blocking_details'), list) else []
+                proof_blockers_html = ''
+                if proof_blocking_details:
+                    blocker_items = ''.join(
+                        f"<li><strong>{item.get('severity', 'medium')}</strong>: {item.get('message', 'unspecified blocker')}</li>"
+                        for item in proof_blocking_details
+                        if isinstance(item, dict)
+                    )
+                    proof_blockers_html = f'<div class="small-note">Proof blockers:</div><ul class="bullet-list">{blocker_items}</ul>'
                 proof_html = (
                     f"<div class=\"small-note\">Proof loop: {proof_snapshot.get('status', 'disabled')}"
                     f" (task {proof_snapshot.get('task_id') or 'n/a'}, verdict {proof_snapshot.get('verdict_status', 'none')}, decision {proof_snapshot.get('decision', 'unknown')})</div>"
-                    f"<div class=\"small-note\">Proof evidence: {proof_snapshot.get('evidence_status', 'none')}; ready for apply: {str(proof_snapshot.get('ready_for_apply', False)).lower()}; blockers: {proof_snapshot.get('blocking_count', 0)}</div>"
+                    f"<div class=\"small-note\">Proof evidence: {proof_snapshot.get('evidence_status', 'none')}; review ready: {str(proof_snapshot.get('review_ready', False)).lower()}; ready for apply: {str(proof_snapshot.get('ready_for_apply', False)).lower()}; blockers: {proof_snapshot.get('blocking_count', 0)}</div>"
                     f"<div class=\"small-note\">Proof checks: passed {proof_checks.get('passed', 0)}, failed {proof_checks.get('failed', 0)}, pending {proof_checks.get('pending', 0)}</div>"
                     f"<div class=\"small-note\">Proof artifacts: present {proof_artifacts.get('present', 0)} / total {proof_artifacts.get('total', 0)}</div>"
                     + (
@@ -368,6 +387,7 @@ def build_page(snapshot: dict[str, object]) -> str:
                         if recommendation
                         else ''
                     )
+                    + proof_blockers_html
                 )
             cards.append(
                 f'''<section id="{card_slug}" class="page-panel">

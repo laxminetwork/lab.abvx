@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "source": "Lab proof snapshot",
+  "repo_count": 3,
+  "repos": [
+    {
+      "repo": "markoblogo/AGENTS.md_generator",
+      "proof_queue": "review-ready",
+      "workflow_sync_status": "matches",
+      "operator_queue": "review-later",
+      "proof_snapshot": {
+        "status": "complete",
+        "task_id": "proof-loop-v0",
+        "contract": true,
+        "evidence": true,
+        "verdict": true,
+        "verdict_status": "needs-review",
+        "decision": "review-ready",
+        "recommendation": "Review the captured evidence bundle before marking the task as pass.",
+        "ready_for_apply": false,
+        "review_ready": true,
+        "evidence_status": "complete",
+        "blocking_count": 0,
+        "blocking_details": [],
+        "check_summary": {
+          "total": 2,
+          "passed": 2,
+          "failed": 0,
+          "pending": 0,
+          "recorded": 0
+        },
+        "artifact_summary": {
+          "total": 2,
+          "present": 2,
+          "missing": 0
+        }
+      },
+      "target_workflow": ".github/workflows/set.yml"
+    },
+    {
+      "repo": "markoblogo/SET",
+      "proof_queue": "disabled",
+      "workflow_sync_status": "matches",
+      "operator_queue": "review-later",
+      "proof_snapshot": {
+        "status": "disabled",
+        "task_id": null,
+        "contract": false,
+        "evidence": false,
+        "verdict": false,
+        "verdict_status": "none"
+      },
+      "target_workflow": ".github/workflows/set.yml"
+    },
+    {
+      "repo": "markoblogo/lab.abvx",
+      "proof_queue": "disabled",
+      "workflow_sync_status": "matches",
+      "operator_queue": "ready-now",
+      "proof_snapshot": {
+        "status": "disabled",
+        "task_id": null,
+        "contract": false,
+        "evidence": false,
+        "verdict": false,
+        "verdict_status": "none"
+      },
+      "target_workflow": ".github/workflows/set.yml"
+    }
+  ]
+}

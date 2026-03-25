@@ -19,11 +19,11 @@
         "repo": "markoblogo/AGENTS.md_generator",
         "status": "completed",
         "conclusion": "success",
-        "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23552042347",
-        "name": "agentsgen guard + pack check",
+        "html_url": "https://github.com/markoblogo/AGENTS.md_generator/actions/runs/23554171301",
+        "name": "SET",
         "head_branch": "main",
-        "event": "push",
-        "updated_at": "2026-03-25T16:27:31Z",
+        "event": "workflow_dispatch",
+        "updated_at": "2026-03-25T17:14:33Z",
         "workflow_sync_status": "matches",
         "operator_queue": "review-later",
         "repomap_snapshot": {
@@ -78,7 +78,24 @@
           "contract": true,
           "evidence": true,
           "verdict": true,
-          "verdict_status": "needs-review"
+          "verdict_status": "needs-review",
+          "decision": "review-ready",
+          "recommendation": "Review the captured evidence bundle before marking the task as pass.",
+          "ready_for_apply": false,
+          "evidence_status": "complete",
+          "blocking_count": 0,
+          "check_summary": {
+            "total": 2,
+            "passed": 2,
+            "failed": 0,
+            "pending": 0,
+            "recorded": 0
+          },
+          "artifact_summary": {
+            "total": 2,
+            "present": 2,
+            "missing": 0
+          }
         }
       },
       "planning": {
@@ -366,8 +383,10 @@
           "decision": "review-ready",
           "recommendation": "Review the captured evidence bundle before marking the task as pass.",
           "ready_for_apply": false,
+          "review_ready": true,
           "evidence_status": "complete",
           "blocking_count": 0,
+          "blocking_details": [],
           "check_summary": {
             "total": 2,
             "passed": 2,
@@ -704,11 +723,11 @@
         "repo": "markoblogo/lab.abvx",
         "status": "completed",
         "conclusion": "success",
-        "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23553037410",
+        "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23554096982",
         "name": "pages build and deployment",
         "head_branch": "main",
         "event": "dynamic",
-        "updated_at": "2026-03-25T16:49:28Z",
+        "updated_at": "2026-03-25T17:13:16Z",
         "workflow_sync_status": "matches",
         "operator_queue": "ready-now",
         "repomap_snapshot": {
