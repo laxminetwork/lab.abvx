@@ -86,6 +86,8 @@ def build_page(snapshot: dict[str, object]) -> str:
         next_action_label = entry.get('next_action_label') or review_payload.get('next_action_label') or 'Next step'
         recommended_step = entry.get('recommended_operator_step') or review_payload.get('recommended_operator_step') or 'n/a'
         next_command = entry.get('next_shell_command') or review_payload.get('next_shell_command') or 'n/a'
+        apply_readiness = entry.get('apply_readiness') or review_payload.get('apply_readiness') or 'unknown'
+        blocked_by = entry.get('blocked_by') or review_payload.get('blocked_by') or []
         manual_steps = apply_sim.get('manual_steps', [])
         full_sequence = '\n'.join(manual_steps)
         pr_command = manual_steps[-1] if manual_steps else 'n/a'
@@ -94,6 +96,10 @@ def build_page(snapshot: dict[str, object]) -> str:
         if unmapped:
             items = ''.join(f'<li>{item}</li>' for item in unmapped)
             unmapped_html = f'<div id="{card_slug}-unmapped" class="small-note">Unmapped fields:</div><ul class="bullet-list">{items}</ul>'
+        blocked_html = ''
+        if blocked_by:
+            items = ''.join(f'<li>{item}</li>' for item in blocked_by)
+            blocked_html = f'<div class="small-note">Blocked by:</div><ul class="bullet-list">{items}</ul>'
         cards.append(
             f'''<section id="{card_slug}" class="page-panel">
             <h2>{index}. {entry['repo']}</h2>

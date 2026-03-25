@@ -40,11 +40,13 @@
               <li id="priority-high"><strong>high</strong>: central repo or site-heavy flow worth reviewing first.</li>
               <li id="priority-medium"><strong>medium</strong>: useful plan, but still blocked by missing wiring or follow-up work.</li>
               <li id="priority-normal"><strong>normal</strong>: valid planning candidate without urgency signal.</li>
+              <li id="apply-ready"><strong>apply: ready</strong>: no current blockers in the planner contract.</li>
+              <li id="apply-blocked"><strong>apply: blocked</strong>: planner sees explicit blockers that should be cleared before apply review.</li>
             </ul>
           </section>
           <section id="markoblogo-lab.abvx" class="page-panel">
             <h2>1. markoblogo/lab.abvx</h2>
-            <p class="small-note">Status: ready-for-review | Priority: high</p>
+            <p class="small-note">Status: ready-for-review | Priority: high | Apply: ready</p>
             <p class="small-note"><a href="#status-ready-for-review">Why ready-for-review?</a> | <a href="#priority-high">Why high?</a></p>
             <ul class="bullet-list">
               <li>Workflow preset: site-ai</li>
@@ -64,11 +66,12 @@ git add .github/workflows/set.yml
 git commit -m "chore(set): plan config apply for markoblogo/lab.abvx"
 gh pr create --repo markoblogo/lab.abvx --base main --head codex/set-plan-markoblogo-lab.abvx --title "chore(set): plan config apply for markoblogo/lab.abvx" --body-file pr-body.md</code></pre>
             
+            
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
 <section id="markoblogo-AGENTS.md_generator" class="page-panel">
             <h2>2. markoblogo/AGENTS.md_generator</h2>
-            <p class="small-note">Status: needs-wiring | Priority: medium</p>
+            <p class="small-note">Status: needs-wiring | Priority: medium | Apply: blocked</p>
             <p class="small-note"><a href="#status-needs-wiring">Why needs-wiring?</a> | <a href="#priority-medium">Why medium?</a> | <a href="#markoblogo-AGENTS.md_generator-unmapped">Show unmapped fields</a></p>
             <ul class="bullet-list">
               <li>Workflow preset: repo-docs</li>
@@ -87,6 +90,7 @@ cp workflow.set.yml .github/workflows/set.yml
 git add .github/workflows/set.yml
 git commit -m "chore(set): plan config apply for markoblogo/AGENTS.md_generator"
 gh pr create --repo markoblogo/AGENTS.md_generator --base main --head codex/set-plan-markoblogo-AGENTS.md_generator --title "chore(set): plan config apply for markoblogo/AGENTS.md_generator" --body-file pr-body.md</code></pre>
+            <div class="small-note">Blocked by:</div><ul class="bullet-list"><li>agentsgen.repomap is in registry but not yet wired into SET action inputs</li><li>agentsgen.snippets is in registry but not yet wired into SET action inputs</li></ul>
             <div id="markoblogo-AGENTS.md_generator-unmapped" class="small-note">Unmapped fields:</div><ul class="bullet-list"><li>agentsgen.repomap is in registry but not yet wired into SET action inputs</li><li>agentsgen.snippets is in registry but not yet wired into SET action inputs</li></ul>
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>
