@@ -60,6 +60,7 @@ def load_repomap_snapshot(
     default_slice = {
         'mode': 'focus+changed' if isinstance(repomap_policy, dict) and repomap_policy.get('focus') and repomap_policy.get('changed') else ('focus' if isinstance(repomap_policy, dict) and repomap_policy.get('focus') else ('changed' if isinstance(repomap_policy, dict) and repomap_policy.get('changed') else 'full')),
         'policy_mode': 'focus+changed' if isinstance(repomap_policy, dict) and repomap_policy.get('focus') and repomap_policy.get('changed') else ('focus' if isinstance(repomap_policy, dict) and repomap_policy.get('focus') else ('changed' if isinstance(repomap_policy, dict) and repomap_policy.get('changed') else 'full')),
+        'policy_label': 'Hybrid Slice' if isinstance(repomap_policy, dict) and repomap_policy.get('focus') and repomap_policy.get('changed') else ('Focused Code Slice' if isinstance(repomap_policy, dict) and repomap_policy.get('focus') else ('Changed Files Slice' if isinstance(repomap_policy, dict) and repomap_policy.get('changed') else 'Full Repo Slice')),
         'focus': repomap_policy.get('focus') if isinstance(repomap_policy, dict) else None,
         'changed_only': bool(repomap_policy.get('changed', False)) if isinstance(repomap_policy, dict) else False,
         'slice_files_count': 0,
@@ -116,6 +117,7 @@ def load_repomap_snapshot(
             active_slice['changed_only'] = changed_only
             active_slice['mode'] = 'focus+changed' if active_slice['focus'] and changed_only else ('focus' if active_slice['focus'] else ('changed' if changed_only else 'full'))
             active_slice['policy_mode'] = active_slice['mode']
+            active_slice['policy_label'] = {'focus+changed': 'Hybrid Slice', 'focus': 'Focused Code Slice', 'changed': 'Changed Files Slice', 'full': 'Full Repo Slice'}.get(active_slice['mode'], 'Full Repo Slice')
 
     return {
         'status': 'present' if compact_path.exists() else 'missing',
@@ -260,11 +262,12 @@ def build_page(snapshot: dict[str, object]) -> str:
             files_count = active_slice.get('slice_files_count', 0)
             slice_source = repomap_snapshot.get('slice_source', 'policy-default')
             policy_mode = active_slice.get('policy_mode', mode)
+            policy_label = active_slice.get('policy_label', {'focus+changed': 'Hybrid Slice', 'focus': 'Focused Code Slice', 'changed': 'Changed Files Slice', 'full': 'Full Repo Slice'}.get(policy_mode, 'Full Repo Slice'))
             slice_label = mode if not focus else f"{mode} ({focus})"
             repomap_html = (
                 f"<div class=\"small-note\">Compact repomap: {repomap_snapshot.get('status', 'not-checked')} "
                 f"(budget {repomap_snapshot.get('compact_budget', 'n/a')}, top files {repomap_snapshot.get('top_ranked_limit', 'n/a')})</div>"
-                f"<div class=\"small-note\">Policy mode: {policy_mode}</div>"
+                f"<div class=\"small-note\">Policy mode: {policy_mode} ({policy_label})</div>"
                 f"<div class=\"small-note\">Active slice: {slice_label}; ranked files: {files_count}</div>"
                 f"<div class=\"small-note\">Slice source: {slice_source}</div>"
                 f"{ranked_html}"
