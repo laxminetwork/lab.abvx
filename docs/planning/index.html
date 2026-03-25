@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" data-style="ascii" data-ascii-mode="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Planning Snapshot | ABVX Lab</title>
+    <meta name="description" content="Read-only planning queue for SET config-apply review across registered repos." />
+    <link rel="canonical" href="https://lab.abvx.xyz/planning/" />
+    <meta property="og:title" content="Planning Snapshot | ABVX Lab" />
+    <meta property="og:description" content="Read-only planning queue for SET config-apply review across registered repos." />
+    <meta property="og:url" content="https://lab.abvx.xyz/planning/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="stylesheet" href="../assets/asciitheme.css?v20260319d" />
+    <link rel="stylesheet" href="../assets/styles.css?v20260320a" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Planning Snapshot","url":"https://lab.abvx.xyz/planning/","description":"Read-only planning queue for SET config-apply review across registered repos."}</script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <div class="container page-layout">
+        <header class="topbar">
+          <div class="topbar-left"><a class="brand" href="../index.html"><img class="brand-logo" src="../assets/logo.png?v20260319d" alt="ABVX Lab logo" /><span class="brand-text">ABVX Lab</span></a></div>
+          <nav class="topbar-nav" aria-label="Primary"><a href="../index.html">Home</a><a href="../index.html#tools">Tools</a><a href="https://github.com/markoblogo">GitHub profile</a></nav>
+          <div class="topbar-right"><div class="header-controls"></div></div>
+        </header>
+        <main class="page-layout">
+          <section class="hero-panel">
+            <span class="kicker">ABVX control plane</span>
+            <h1>What to review next</h1>
+            <p class="lead">Read-only planning queue generated from SET config-apply plans across registered repos.</p>
+            <p class="small-note">This is an operator view only: priority/status hints, suggested branches, and manual next steps. No repo mutation.</p>
+            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
+          </section>
+          <section class="page-panel">
+            <h2>1. markoblogo/lab.abvx</h2>
+            <p class="small-note">Status: ready-for-review | Priority: high</p>
+            <ul class="bullet-list">
+              <li>Workflow preset: site-ai</li>
+              <li>Target workflow: .github/workflows/set.yml</li>
+              <li>Suggested branch: codex/set-plan-markoblogo-lab.abvx</li>
+              <li>Suggested title: chore(set): plan config apply for markoblogo/lab.abvx</li>
+              <li>Next manual step: git checkout -b codex/set-plan-markoblogo-lab.abvx</li>
+            </ul>
+            
+            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
+          </section>
+<section class="page-panel">
+            <h2>2. markoblogo/AGENTS.md_generator</h2>
+            <p class="small-note">Status: needs-wiring | Priority: medium</p>
+            <ul class="bullet-list">
+              <li>Workflow preset: repo-docs</li>
+              <li>Target workflow: .github/workflows/set.yml</li>
+              <li>Suggested branch: codex/set-plan-markoblogo-AGENTS.md_generator</li>
+              <li>Suggested title: chore(set): plan config apply for markoblogo/AGENTS.md_generator</li>
+              <li>Next manual step: git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator</li>
+            </ul>
+            <div class="small-note">Unmapped fields:</div><ul class="bullet-list"><li>agentsgen.repomap is in registry but not yet wired into SET action inputs</li><li>agentsgen.snippets is in registry but not yet wired into SET action inputs</li></ul>
+            <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
+          </section>
+        </main>
+        <footer class="footer footer--lab"><div class="footer-inner"><div class="footer-left"><div class="footer-title">ABVX Lab</div><div class="footer-note">Small, readable, static pages for ABVX developer tools.</div></div></div></footer>
+      </div>
+    </div>
+    <script src="../assets/ascii-theme.js?v20260319d"></script>
+    <script>
+      AsciiTheme.initAsciiTheme({ base: true, managedMode: true, addThemeToggle: true, addStyleToggle: false, mountSelector: '.header-controls' });
+    </script>
+  </body>
+</html>

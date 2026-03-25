@@ -10,6 +10,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Tools
 
+- [What to review next](https://lab.abvx.xyz/planning/) — Read-only planning queue with status/priority hints from SET batch planner.
 - [Repo cards](https://lab.abvx.xyz/repos/) — Aggregated view combining registry baselines and latest workflow status.
 - [Registry snapshot](https://lab.abvx.xyz/registry/) — Read-only view of repo baselines from the SET central registry.
 - [Workflow status snapshot](https://lab.abvx.xyz/status/) — Read-only latest GitHub Actions run per registered repo.
@@ -41,7 +42,8 @@ They still ship together as one package: `agentsgen`.
 - Registry snapshot generator: `scripts/sync_registry_snapshot.py`
 - Workflow status generator: `scripts/sync_status_snapshot.py`
 - Repo cards generator: `scripts/build_repo_cards_snapshot.py`
-- Snapshot outputs: `docs/registry/index.html`, `docs/assets/registry-snapshot.json`, `docs/status/index.html`, `docs/assets/status-snapshot.json`, `docs/repos/index.html`, `docs/assets/repo-cards-snapshot.json`
+- Planning snapshot generator: `scripts/sync_planning_snapshot.py`
+- Snapshot outputs: `docs/registry/index.html`, `docs/assets/registry-snapshot.json`, `docs/status/index.html`, `docs/assets/status-snapshot.json`, `docs/repos/index.html`, `docs/assets/repo-cards-snapshot.json`, `docs/planning/index.html`, `docs/assets/planning-snapshot.json`
 - Home page: `docs/index.html`
 - Tool pages: `docs/tools/<slug>/index.html`
 - SEO basics: `docs/robots.txt` and `docs/sitemap.xml`
