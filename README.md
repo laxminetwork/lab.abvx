@@ -10,6 +10,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Tools
 
+- [Repo cards](https://lab.abvx.xyz/repos/) — Aggregated view combining registry baselines and latest workflow status.
 - [Registry snapshot](https://lab.abvx.xyz/registry/) — Read-only view of repo baselines from the SET central registry.
 - [Workflow status snapshot](https://lab.abvx.xyz/status/) — Read-only latest GitHub Actions run per registered repo.
 - [repomap](https://lab.abvx.xyz/tools/repomap/) — Deterministic repo map + import graph artifacts (read-only).
@@ -39,7 +40,8 @@ They still ship together as one package: `agentsgen`.
 
 - Registry snapshot generator: `scripts/sync_registry_snapshot.py`
 - Workflow status generator: `scripts/sync_status_snapshot.py`
-- Snapshot outputs: `docs/registry/index.html`, `docs/assets/registry-snapshot.json`, `docs/status/index.html`, `docs/assets/status-snapshot.json`
+- Repo cards generator: `scripts/build_repo_cards_snapshot.py`
+- Snapshot outputs: `docs/registry/index.html`, `docs/assets/registry-snapshot.json`, `docs/status/index.html`, `docs/assets/status-snapshot.json`, `docs/repos/index.html`, `docs/assets/repo-cards-snapshot.json`
 - Home page: `docs/index.html`
 - Tool pages: `docs/tools/<slug>/index.html`
 - SEO basics: `docs/robots.txt` and `docs/sitemap.xml`
