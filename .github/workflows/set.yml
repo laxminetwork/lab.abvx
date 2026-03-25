@@ -1,0 +1,27 @@
+name: SET
+
+on:
+  workflow_dispatch:
+
+jobs:
+  set:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: markoblogo/SET@main
+        with:
+          agentsgen: "true"
+          autodetect: "true"
+          path: "."
+          workflow_preset: "site-ai"
+          init: "true"
+          pack: "true"
+          check: "true"
+          repomap: "false"
+          snippets: "false"
+          site_url: "https://lab.abvx.xyz"
+          site_pack: "true"
+          analyze: "true"
+          analyze_url: "https://lab.abvx.xyz"
+          meta: "true"
+          meta_url: "https://lab.abvx.xyz"
