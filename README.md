@@ -1,7 +1,7 @@
 # ABVX Lab
 
-A static hub for ABVX developer tools and small product pages.
-It keeps live links, per-tool docs, and lightweight landing pages in one place.
+A static hub and read-only control plane for ABVX developer tools.
+It keeps live links, per-tool docs, planning/status snapshots, and lightweight landing pages in one place.
 Multiple agentsgen commands are listed separately for discoverability, but they ship as one package.
 
 Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
@@ -10,10 +10,10 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Tools
 
-- [What to review next](https://lab.abvx.xyz/planning/) — Read-only planning queue with status/priority hints from SET batch planner.
-- [Repo cards](https://lab.abvx.xyz/repos/) — Aggregated view combining registry baselines and latest workflow status.
+- [What to review next](https://lab.abvx.xyz/planning/) — Read-only planning queue with status, priority, and workflow-sync hints from SET batch planner.
+- [Repo cards](https://lab.abvx.xyz/repos/) — Aggregated view combining registry baselines, latest workflow status, and sync state.
 - [Registry snapshot](https://lab.abvx.xyz/registry/) — Read-only view of repo baselines from the SET central registry.
-- [Workflow status snapshot](https://lab.abvx.xyz/status/) — Read-only latest GitHub Actions run per registered repo.
+- [Workflow status snapshot](https://lab.abvx.xyz/status/) — Read-only latest GitHub Actions run per registered repo plus sync state from planning.
 - [repomap](https://lab.abvx.xyz/tools/repomap/) — Deterministic repo map + import graph artifacts (read-only).
 - [SET](https://lab.abvx.xyz/tools/set/) — Thin GitHub Action orchestrator for presets, repo-docs, and site-aware agentsgen flows.
 - [agentsgen snippets](https://lab.abvx.xyz/tools/agentsgen-snippets/) — Canonical README snippet extraction with deterministic CI drift checks.
