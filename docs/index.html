@@ -80,21 +80,19 @@
 
       .home-kicker {
         display: flex;
-        gap: 0.55rem;
+        gap: 0.6rem;
         flex-wrap: wrap;
         align-items: center;
-        margin-bottom: 0.85rem;
+        margin-bottom: 0.9rem;
+        color: var(--home-muted);
       }
 
-      .home-pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        padding: 0.15rem 0.55rem;
-        border: 1px solid currentColor;
-        border-radius: 999px;
-        font-size: 0.82rem;
-        opacity: 0.9;
+      .home-kicker .hero-kicker__brand {
+        color: var(--home-blue);
+      }
+
+      .home-kicker .slash {
+        opacity: 0.45;
       }
 
       .home-hero h1 {
@@ -127,11 +125,11 @@
       }
 
       .entry-panel {
-        border: 1px solid var(--home-line);
-        background: color-mix(in srgb, var(--home-cream) 86%, transparent);
-        padding: 1rem;
         display: grid;
-        gap: 0.9rem;
+        gap: 0.8rem;
+        padding-left: 1.2rem;
+        border-left: 1px solid var(--home-line);
+        align-content: start;
       }
 
       .entry-panel .kicker {
@@ -141,8 +139,8 @@
       .entry-panel h2 {
         margin: 0;
         color: var(--home-blue);
-        font-size: clamp(1.65rem, 2.4vw, 2.3rem);
-        letter-spacing: -0.04em;
+        font-size: clamp(1.85rem, 2.6vw, 2.5rem);
+        letter-spacing: -0.05em;
       }
 
       .entry-panel p {
@@ -160,12 +158,12 @@
       .entry-links {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.6rem;
+        gap: 0.5rem;
       }
 
       .cp-panel {
         display: grid;
-        gap: 1rem;
+        gap: 0.9rem;
       }
 
       .cp-head {
@@ -176,35 +174,14 @@
         flex-wrap: wrap;
       }
 
+      .cp-head p {
+        max-width: 48ch;
+      }
+
       .cp-head h2 {
         margin: 0;
       }
 
-      .cp-summary {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 0.75rem;
-      }
-
-      .cp-stat {
-        border: 1px solid var(--home-line);
-        background: var(--home-panel);
-        padding: 0.8rem 0.9rem;
-      }
-
-      .cp-stat-label {
-        font-size: 0.78rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: var(--home-muted);
-        margin-bottom: 0.35rem;
-      }
-
-      .cp-stat-value {
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: var(--home-blue);
-      }
 
       .cp-table-wrap {
         width: 100%;
@@ -270,12 +247,17 @@
 
       .home-groups {
         display: grid;
-        gap: 1rem;
+        gap: 1.15rem;
+      }
+
+      .tools-surface {
+        display: grid;
+        gap: 1.4rem;
       }
 
       .group-panel {
         display: grid;
-        gap: 0.8rem;
+        gap: 0.7rem;
       }
 
       .group-header {
@@ -284,18 +266,14 @@
         gap: 1rem;
         align-items: baseline;
         flex-wrap: wrap;
+        padding-bottom: 0.15rem;
       }
 
       .group-header h3 {
         margin: 0;
-        font-size: 1.1rem;
+        font-size: 1rem;
         color: var(--home-blue);
-      }
-
-      .group-header p {
-        margin: 0;
-        color: var(--home-muted);
-        max-width: 60ch;
+        letter-spacing: -0.02em;
       }
 
       .tool-list {
@@ -306,8 +284,8 @@
       .tool-row {
         display: grid;
         grid-template-columns: minmax(180px, 220px) minmax(0, 1fr) auto;
-        gap: 0.9rem 1rem;
-        padding: 0.9rem 0;
+        gap: 0.7rem 1rem;
+        padding: 0.75rem 0;
         border-top: 1px solid var(--home-line);
         align-items: start;
       }
@@ -356,16 +334,9 @@
         color: var(--home-muted);
       }
 
-      .home-tail {
-        color: var(--home-muted);
-      }
 
       @media (max-width: 960px) {
         .home-hero-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .cp-summary {
           grid-template-columns: 1fr;
         }
       }
@@ -409,8 +380,10 @@
                 <div>
                   <div class="home-kicker">
                     <span class="hero-kicker__brand">ABVX Lab</span>
-                    <span class="home-pill">AI-assisted coding</span>
-                    <span class="home-pill">read-only control plane</span>
+                    <span class="slash">/</span>
+                    <span>AI-assisted coding tools</span>
+                    <span class="slash">/</span>
+                    <span>read-only control plane</span>
                   </div>
                   <h1>Tools for AI-assisted coding</h1>
                   <p class="lead">
@@ -418,8 +391,7 @@
                     if they survive real usage, they become open source.
                   </p>
                   <p class="small-note home-note">
-                    The structure is now built around one clear entrypoint, one compact control-plane summary, and grouped tool
-                    families that can keep growing without collapsing into a card wall.
+                    One entrypoint, one compact control-plane snapshot, and one grouped catalog below. The goal is a calmer front page that still scales with the ecosystem.
                   </p>
                   <div class="home-cta">
                     <a class="button" href="#tools">Browse tools</a>
@@ -430,11 +402,9 @@
                 <div class="entry-panel">
                   <span class="kicker">Primary entrypoint</span>
                   <h2>SET</h2>
-                  <p>
-                    Thin GitHub Action orchestrator for presets, repo-docs, site-aware flows, repomap, registry review, and
-                    optional proof-loop runs.
-                  </p>
-                  <p><code>uses: markoblogo/SET@main</code> with <code>workflow_preset: site-ai</code></p>
+                  <p>Thin GitHub Action orchestrator for presets, repo-docs, site-aware flows, repomap, and optional proof-loop runs.</p>
+                  <p><code>uses: markoblogo/SET@main</code></p>
+                  <p><code>workflow_preset: site-ai</code></p>
                   <div class="entry-links">
                     <a class="button-secondary" href="tools/set/index.html">Tool page</a>
                     <a class="button-secondary" href="https://github.com/markoblogo/SET">GitHub</a>
@@ -450,22 +420,7 @@
                   <span class="kicker">ABVX control plane</span>
                   <h2>Registry snapshot</h2>
                 </div>
-                <p class="small-note">Static summary from SET registry and planning/status/proof snapshots.</p>
-              </div>
-
-              <div class="cp-summary">
-                <div class="cp-stat">
-                  <div class="cp-stat-label">Registered repos</div>
-                  <div class="cp-stat-value">3</div>
-                </div>
-                <div class="cp-stat">
-                  <div class="cp-stat-label">Ready now</div>
-                  <div class="cp-stat-value">1</div>
-                </div>
-                <div class="cp-stat">
-                  <div class="cp-stat-label">Proof states</div>
-                  <div class="cp-stat-value">1 blocked / 1 review-ready</div>
-                </div>
+                <p class="small-note">Static summary from SET registry plus planning, status, and proof snapshots.</p>
               </div>
 
               <div class="cp-table-wrap">
@@ -515,173 +470,169 @@
               </div>
             </section>
 
-            <section class="home-groups" id="tools">
-              <section class="page-panel group-panel">
-                <div class="group-header">
-                  <div>
-                    <span class="kicker">Orchestration</span>
-                    <h3>SET and review-first workflow wiring</h3>
-                  </div>
-                  <p>One entrypoint for preset resolution, orchestration, drift checks, planning exports, and optional proof-loop.</p>
+            <section class="page-panel tools-surface" id="tools">
+              <div class="cp-head">
+                <div>
+                  <span class="kicker">ABVX tools</span>
+                  <h2>Catalog</h2>
                 </div>
-                <div class="tool-list">
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/set/index.html">SET</a></div>
-                    <div class="tool-desc">Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry review, and proof-loop orchestration.</div>
-                    <div class="tool-links"><a href="tools/set/index.html">page</a><a href="https://github.com/markoblogo/SET">gh</a></div>
-                  </div>
-                </div>
-              </section>
+                <p class="small-note">Grouped by role and kept in one surface so the catalog can grow without feeling fragmented.</p>
+              </div>
 
-              <section class="page-panel group-panel">
-                <div class="group-header">
-                  <div>
-                    <span class="kicker">Repo docs &amp; agent context</span>
-                    <h3>Docs generation, safe updates, and AI-readable bundles</h3>
+              <div class="home-groups">
+                <section class="group-panel">
+                  <div class="group-header">
+                    <div>
+                      <span class="kicker">Orchestration</span>
+                      <h3>SET</h3>
+                    </div>
                   </div>
-                  <p>The `agentsgen` family stays discoverable here as separate surfaces, while still shipping as one package.</p>
-                </div>
-                <div class="tool-list">
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/agentsgen/index.html">agentsgen</a></div>
-                    <div class="tool-desc">Safe repo docs toolchain — AGENTS.md, RUNBOOK.md, PR Guard, AI bundle, and proof artifacts.</div>
-                    <div class="tool-links"><a href="tools/agentsgen/index.html">page</a><a href="https://github.com/markoblogo/AGENTS.md_generator">gh</a><a href="https://agentsmd.abvx.xyz/">live</a></div>
+                  <div class="tool-list">
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/set/index.html">SET</a></div>
+                      <div class="tool-desc">Thin GitHub Action entrypoint for presets, repo-docs, site-ai flows, registry review, and proof-loop orchestration.</div>
+                      <div class="tool-links"><a href="tools/set/index.html">page</a><a href="https://github.com/markoblogo/SET">gh</a></div>
+                    </div>
                   </div>
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/agentsgen-init/index.html">agentsgen init</a></div>
-                    <div class="tool-desc">Bootstrap `.agentsgen.json` plus AGENTS/RUNBOOK marker sections.</div>
-                    <div class="tool-links"><a href="tools/agentsgen-init/index.html">page</a></div>
-                  </div>
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/agentsgen-update/index.html">agentsgen update</a></div>
-                    <div class="tool-desc">Patch marker sections only; never overwrite handwritten docs.</div>
-                    <div class="tool-links"><a href="tools/agentsgen-update/index.html">page</a></div>
-                  </div>
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/agentsgen-pack/index.html">agentsgen pack</a></div>
-                    <div class="tool-desc">Generate AI docs bundle (`llms.txt`, `docs/ai/`) with repo mode and site mode.</div>
-                    <div class="tool-links"><a href="tools/agentsgen-pack/index.html">page</a></div>
-                  </div>
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/agentsgen-snippets/index.html">agentsgen snippets</a></div>
-                    <div class="tool-desc">Canonical README snippet extraction with deterministic drift checks.</div>
-                    <div class="tool-links"><a href="tools/agentsgen-snippets/index.html">page</a></div>
-                  </div>
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/agentsgen-presets/index.html">agentsgen presets</a></div>
-                    <div class="tool-desc">Copy-paste setup for common stacks — explicit commands, no guesswork.</div>
-                    <div class="tool-links"><a href="tools/agentsgen-presets/index.html">page</a></div>
-                  </div>
-                </div>
-              </section>
+                </section>
 
-              <section class="page-panel group-panel">
-                <div class="group-header">
-                  <div>
-                    <span class="kicker">Validation &amp; CI</span>
-                    <h3>Repo readiness and drift visibility</h3>
+                <section class="group-panel">
+                  <div class="group-header">
+                    <div>
+                      <span class="kicker">Repo docs &amp; agent context</span>
+                      <h3>agentsgen</h3>
+                    </div>
                   </div>
-                  <p>Fast checks and stable outputs for repos that need to stay agent-friendly without constant babysitting.</p>
-                </div>
-                <div class="tool-list">
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/agentsgen-check/index.html">agentsgen check</a></div>
-                    <div class="tool-desc">Validate repo readiness and drift in a CI-friendly way.</div>
-                    <div class="tool-links"><a href="tools/agentsgen-check/index.html">page</a></div>
+                  <div class="tool-list">
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/agentsgen/index.html">agentsgen</a></div>
+                      <div class="tool-desc">Safe repo docs toolchain — AGENTS.md, RUNBOOK.md, PR Guard, AI bundle, and proof artifacts.</div>
+                      <div class="tool-links"><a href="tools/agentsgen/index.html">page</a><a href="https://github.com/markoblogo/AGENTS.md_generator">gh</a><a href="https://agentsmd.abvx.xyz/">live</a></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/agentsgen-init/index.html">agentsgen init</a></div>
+                      <div class="tool-desc">Bootstrap `.agentsgen.json` plus AGENTS/RUNBOOK marker sections.</div>
+                      <div class="tool-links"><a href="tools/agentsgen-init/index.html">page</a></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/agentsgen-update/index.html">agentsgen update</a></div>
+                      <div class="tool-desc">Patch marker sections only; never overwrite handwritten docs.</div>
+                      <div class="tool-links"><a href="tools/agentsgen-update/index.html">page</a></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/agentsgen-pack/index.html">agentsgen pack</a></div>
+                      <div class="tool-desc">Generate AI docs bundle (`llms.txt`, `docs/ai/`) with repo mode and site mode.</div>
+                      <div class="tool-links"><a href="tools/agentsgen-pack/index.html">page</a></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/agentsgen-snippets/index.html">agentsgen snippets</a></div>
+                      <div class="tool-desc">Canonical README snippet extraction with deterministic drift checks.</div>
+                      <div class="tool-links"><a href="tools/agentsgen-snippets/index.html">page</a></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/agentsgen-presets/index.html">agentsgen presets</a></div>
+                      <div class="tool-desc">Copy-paste setup for common stacks — explicit commands, no guesswork.</div>
+                      <div class="tool-links"><a href="tools/agentsgen-presets/index.html">page</a></div>
+                    </div>
                   </div>
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/agentsgen-detect/index.html">agentsgen detect</a></div>
-                    <div class="tool-desc">Heuristic repo scan with stable JSON output and no execution.</div>
-                    <div class="tool-links"><a href="tools/agentsgen-detect/index.html">page</a></div>
-                  </div>
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/agentsgen-status/index.html">agentsgen status</a></div>
-                    <div class="tool-desc">Instant repo overview for managed files, markers, fallbacks, and drift.</div>
-                    <div class="tool-links"><a href="tools/agentsgen-status/index.html">page</a></div>
-                  </div>
-                </div>
-              </section>
+                </section>
 
-              <section class="page-panel group-panel">
-                <div class="group-header">
-                  <div>
-                    <span class="kicker">Analysis &amp; LLMO</span>
-                    <h3>AI visibility, repo mapping, and the migrated LLMO layer</h3>
+                <section class="group-panel">
+                  <div class="group-header">
+                    <div>
+                      <span class="kicker">Validation &amp; CI</span>
+                      <h3>Readiness and drift</h3>
+                    </div>
                   </div>
-                  <p>Repomap is already live. Public analyze/meta surfaces stay visible here as roadmap items instead of hidden implementation details.</p>
-                </div>
-                <div class="tool-list">
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/repomap/index.html">repomap</a><span class="tool-tag">new</span></div>
-                    <div class="tool-desc">Token-budgeted repo map + import graph with relevance ranking and slice modes.</div>
-                    <div class="tool-links"><a href="tools/repomap/index.html">page</a><a href="https://github.com/markoblogo/AGENTS.md_generator">gh</a></div>
+                  <div class="tool-list">
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/agentsgen-check/index.html">agentsgen check</a></div>
+                      <div class="tool-desc">Validate repo readiness and drift in a CI-friendly way.</div>
+                      <div class="tool-links"><a href="tools/agentsgen-check/index.html">page</a></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/agentsgen-detect/index.html">agentsgen detect</a></div>
+                      <div class="tool-desc">Heuristic repo scan with stable JSON output and no execution.</div>
+                      <div class="tool-links"><a href="tools/agentsgen-detect/index.html">page</a></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/agentsgen-status/index.html">agentsgen status</a></div>
+                      <div class="tool-desc">Instant repo overview for managed files, markers, fallbacks, and drift.</div>
+                      <div class="tool-links"><a href="tools/agentsgen-status/index.html">page</a></div>
+                    </div>
                   </div>
-                  <div class="tool-row">
-                    <div class="tool-name">agentsgen analyze<span class="tool-tag">planned</span></div>
-                    <div class="tool-desc">AI-visibility scoring for a public URL — next public surface of the LLMO migration.</div>
-                    <div class="tool-links"><span>roadmap</span></div>
-                  </div>
-                  <div class="tool-row">
-                    <div class="tool-name">agentsgen meta<span class="tool-tag">planned</span></div>
-                    <div class="tool-desc">SEO + AI metadata generation for a URL — kept visible as the next public surface.</div>
-                    <div class="tool-links"><span>roadmap</span></div>
-                  </div>
-                </div>
-              </section>
+                </section>
 
-              <section class="page-panel group-panel">
-                <div class="group-header">
-                  <div>
-                    <span class="kicker">Release &amp; publishing</span>
-                    <h3>Communication and publishing helpers</h3>
+                <section class="group-panel">
+                  <div class="group-header">
+                    <div>
+                      <span class="kicker">Analysis &amp; LLMO</span>
+                      <h3>Repomap and AI visibility</h3>
+                    </div>
                   </div>
-                  <p>Small utilities that turn engineering output into things you can actually publish or ship.</p>
-                </div>
-                <div class="tool-list">
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/git-tweet/index.html">git-tweet</a></div>
-                    <div class="tool-desc">Turn git diff into tweet-sized release notes with context and links.</div>
-                    <div class="tool-links"><a href="tools/git-tweet/index.html">page</a><a href="https://github.com/markoblogo/git-tweet">gh</a><a href="https://git-tweet.abvx.xyz/">live</a></div>
+                  <div class="tool-list">
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/repomap/index.html">repomap</a><span class="tool-tag">new</span></div>
+                      <div class="tool-desc">Token-budgeted repo map + import graph with relevance ranking and slice modes.</div>
+                      <div class="tool-links"><a href="tools/repomap/index.html">page</a><a href="https://github.com/markoblogo/AGENTS.md_generator">gh</a></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name">agentsgen analyze<span class="tool-tag">planned</span></div>
+                      <div class="tool-desc">AI-visibility scoring for a public URL — next public surface of the LLMO migration.</div>
+                      <div class="tool-links"><span>roadmap</span></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name">agentsgen meta<span class="tool-tag">planned</span></div>
+                      <div class="tool-desc">SEO + AI metadata generation for a URL — kept visible as the next public surface.</div>
+                      <div class="tool-links"><span>roadmap</span></div>
+                    </div>
                   </div>
-                </div>
-              </section>
+                </section>
 
-              <section class="page-panel group-panel">
-                <div class="group-header">
-                  <div>
-                    <span class="kicker">Utilities</span>
-                    <h3>Smaller standalone tools</h3>
+                <section class="group-panel">
+                  <div class="group-header">
+                    <div>
+                      <span class="kicker">Release &amp; publishing</span>
+                      <h3>Publishing helpers</h3>
+                    </div>
                   </div>
-                  <p>Minimal side tools that still belong in the same ecosystem but do not need orchestration-first treatment.</p>
-                </div>
-                <div class="tool-list">
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/abvx-shortener/index.html">abvx-shortener</a></div>
-                    <div class="tool-desc">Minimal URL shortener — Cloudflare Worker + KV.</div>
-                    <div class="tool-links"><a href="tools/abvx-shortener/index.html">page</a><a href="https://go.abvx.xyz">live</a></div>
+                  <div class="tool-list">
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/git-tweet/index.html">git-tweet</a></div>
+                      <div class="tool-desc">Turn git diff into tweet-sized release notes with context and links.</div>
+                      <div class="tool-links"><a href="tools/git-tweet/index.html">page</a><a href="https://github.com/markoblogo/git-tweet">gh</a><a href="https://git-tweet.abvx.xyz/">live</a></div>
+                    </div>
                   </div>
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/asciitheme/index.html">AsciiTheme</a></div>
-                    <div class="tool-desc">Tiny CSS theme kit for clean, readable dev pages.</div>
-                    <div class="tool-links"><a href="tools/asciitheme/index.html">page</a><a href="https://github.com/markoblogo/AsciiTheme">gh</a></div>
+                </section>
+
+                <section class="group-panel">
+                  <div class="group-header">
+                    <div>
+                      <span class="kicker">Utilities</span>
+                      <h3>Smaller tools</h3>
+                    </div>
                   </div>
-                  <div class="tool-row">
-                    <div class="tool-name"><a href="tools/sitelen-layer-plugin/index.html">sitelen-layer-plugin</a></div>
-                    <div class="tool-desc">Rendering plugin for a sitelen pona layer and adjacent toki pona tooling.</div>
-                    <div class="tool-links"><a href="tools/sitelen-layer-plugin/index.html">page</a><a href="https://github.com/markoblogo/sitelen-layer-plugin">gh</a></div>
+                  <div class="tool-list">
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/abvx-shortener/index.html">abvx-shortener</a></div>
+                      <div class="tool-desc">Minimal URL shortener — Cloudflare Worker + KV.</div>
+                      <div class="tool-links"><a href="tools/abvx-shortener/index.html">page</a><a href="https://go.abvx.xyz">live</a></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/asciitheme/index.html">AsciiTheme</a></div>
+                      <div class="tool-desc">Tiny CSS theme kit for clean, readable dev pages.</div>
+                      <div class="tool-links"><a href="tools/asciitheme/index.html">page</a><a href="https://github.com/markoblogo/AsciiTheme">gh</a></div>
+                    </div>
+                    <div class="tool-row">
+                      <div class="tool-name"><a href="tools/sitelen-layer-plugin/index.html">sitelen-layer-plugin</a></div>
+                      <div class="tool-desc">Rendering plugin for a sitelen pona layer and adjacent toki pona tooling.</div>
+                      <div class="tool-links"><a href="tools/sitelen-layer-plugin/index.html">page</a><a href="https://github.com/markoblogo/sitelen-layer-plugin">gh</a></div>
+                    </div>
                   </div>
-                </div>
-              </section>
+                </section>
+              </div>
             </section>
 
-            <section class="page-panel home-tail">
-              <span class="kicker">ABVX Lab</span>
-              <p>
-                The home page stays static and readable on purpose. Deeper state lives in the dedicated control-plane pages,
-                but the first screen should still tell you what the ecosystem is, what to click first, and what is actually alive.
-              </p>
-            </section>
-          </div>
         </main>
 
         <footer class="footer footer--lab">
