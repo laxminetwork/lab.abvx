@@ -264,10 +264,11 @@ def build_page(snapshot: dict[str, object]) -> str:
             policy_mode = active_slice.get('policy_mode', mode)
             policy_label = active_slice.get('policy_label', {'focus+changed': 'Hybrid Slice', 'focus': 'Focused Code Slice', 'changed': 'Changed Files Slice', 'full': 'Full Repo Slice'}.get(policy_mode, 'Full Repo Slice'))
             slice_label = mode if not focus else f"{mode} ({focus})"
+            policy_href = {'full': '#policy-full', 'focus': '#policy-focus', 'changed': '#policy-changed', 'focus+changed': '#policy-hybrid'}.get(policy_mode, '#policy-full')
             repomap_html = (
                 f"<div class=\"small-note\">Compact repomap: {repomap_snapshot.get('status', 'not-checked')} "
                 f"(budget {repomap_snapshot.get('compact_budget', 'n/a')}, top files {repomap_snapshot.get('top_ranked_limit', 'n/a')})</div>"
-                f"<div class=\"small-note\">Policy mode: {policy_mode} ({policy_label})</div>"
+                f"<div class=\"small-note\">Policy mode: <a href=\"{policy_href}\">{policy_mode} ({policy_label})</a></div>"
                 f"<div class=\"small-note\">Active slice: {slice_label}; ranked files: {files_count}</div>"
                 f"<div class=\"small-note\">Slice source: {slice_source}</div>"
                 f"{ranked_html}"

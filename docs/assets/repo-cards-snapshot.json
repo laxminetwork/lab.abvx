@@ -65,6 +65,7 @@
           "active_slice": {
             "mode": "focus",
             "policy_mode": "focus",
+            "policy_label": "Focused Code Slice",
             "focus": "understand",
             "changed_only": false,
             "slice_files_count": 20
@@ -374,6 +375,7 @@
           "active_slice": {
             "mode": "changed",
             "policy_mode": "changed",
+            "policy_label": "Changed Files Slice",
             "focus": null,
             "changed_only": true,
             "slice_files_count": 2
@@ -625,11 +627,11 @@
         "repo": "markoblogo/lab.abvx",
         "status": "completed",
         "conclusion": "success",
-        "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23552231850",
+        "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23552581166",
         "name": "pages build and deployment",
         "head_branch": "main",
         "event": "dynamic",
-        "updated_at": "2026-03-25T16:31:57Z",
+        "updated_at": "2026-03-25T16:39:27Z",
         "workflow_sync_status": "matches",
         "operator_queue": "ready-now",
         "repomap_snapshot": {
@@ -640,6 +642,7 @@
           "active_slice": {
             "mode": "full",
             "policy_mode": "full",
+            "policy_label": "Full Repo Slice",
             "focus": null,
             "changed_only": false,
             "slice_files_count": 0

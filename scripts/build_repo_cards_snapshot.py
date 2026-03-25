@@ -90,8 +90,9 @@ def main() -> int:
             slice_source = repomap_snapshot.get('slice_source', 'policy-default')
             policy_mode = active_slice.get('policy_mode', mode)
             policy_label = active_slice.get('policy_label', {'focus+changed': 'Hybrid Slice', 'focus': 'Focused Code Slice', 'changed': 'Changed Files Slice', 'full': 'Full Repo Slice'}.get(policy_mode, 'Full Repo Slice'))
+            policy_href = {'full': '../planning/index.html#policy-full', 'focus': '../planning/index.html#policy-focus', 'changed': '../planning/index.html#policy-changed', 'focus+changed': '../planning/index.html#policy-hybrid'}.get(policy_mode, '../planning/index.html#policy-full')
             slice_label = mode if not focus else f"{mode} ({focus})"
-            slice_line = f'<li>Policy mode: {policy_mode} ({policy_label})</li><li>Active slice: {slice_label}; ranked files: {files_count}</li><li>Slice source: {slice_source}</li>'
+            slice_line = f'<li>Policy mode: <a href="{policy_href}">{policy_mode} ({policy_label})</a></li><li>Active slice: {slice_label}; ranked files: {files_count}</li><li>Slice source: {slice_source}</li>'
         top_ranked = repomap_snapshot.get('top_ranked_files', []) if isinstance(repomap_snapshot, dict) else []
         top_ranked_html = ''
         if top_ranked:
