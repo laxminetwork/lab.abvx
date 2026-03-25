@@ -19,10 +19,12 @@
       "wiring_gaps": [
         {
           "kind": "missing-set-input",
+          "capability": "agentsgen.repomap",
           "message": "agentsgen.repomap is in registry but not yet wired into SET action inputs"
         },
         {
           "kind": "missing-set-input",
+          "capability": "agentsgen.snippets",
           "message": "agentsgen.snippets is in registry but not yet wired into SET action inputs"
         }
       ],
@@ -82,6 +84,7 @@
             "supported_by_set": false,
             "wiring_gap": {
               "kind": "missing-set-input",
+              "capability": "agentsgen.repomap",
               "message": "agentsgen.repomap is in registry but not yet wired into SET action inputs"
             }
           },
@@ -92,6 +95,7 @@
             "supported_by_set": false,
             "wiring_gap": {
               "kind": "missing-set-input",
+              "capability": "agentsgen.snippets",
               "message": "agentsgen.snippets is in registry but not yet wired into SET action inputs"
             }
           }
@@ -129,6 +133,7 @@
               "supported_by_set": false,
               "wiring_gap": {
                 "kind": "missing-set-input",
+                "capability": "agentsgen.repomap",
                 "message": "agentsgen.repomap is in registry but not yet wired into SET action inputs"
               }
             },
@@ -139,6 +144,7 @@
               "supported_by_set": false,
               "wiring_gap": {
                 "kind": "missing-set-input",
+                "capability": "agentsgen.snippets",
                 "message": "agentsgen.snippets is in registry but not yet wired into SET action inputs"
               }
             }
