@@ -97,7 +97,7 @@ def build_page(snapshot: dict[str, object]) -> str:
         cards.append(
             f'''<section id="{card_slug}" class="page-panel">
             <h2>{index}. {entry['repo']}</h2>
-            <p class="small-note">Status: {entry['status_hint']} | Priority: {entry['priority_hint']}</p>
+            <p class="small-note">Status: {entry['status_hint']} | Priority: {entry['priority_hint']} | Apply: {apply_readiness}</p>
             <p class="small-note"><a href="#status-{entry['status_hint']}">Why {entry['status_hint']}?</a> | <a href="#priority-{entry['priority_hint']}">Why {entry['priority_hint']}?</a>{' | <a href="#' + card_slug + '-unmapped">Show unmapped fields</a>' if unmapped else ''}</p>
             <ul class="bullet-list">
               <li>Workflow preset: {workflow['with'].get('workflow_preset', 'none')}</li>
@@ -112,6 +112,7 @@ def build_page(snapshot: dict[str, object]) -> str:
             <pre><code>{pr_command}</code></pre>
             <div class="small-note">Copy full sequence:</div>
             <pre><code>{full_sequence}</code></pre>
+            {blocked_html}
             {unmapped_html}
             <div class="link-grid"><a class="button" href="../repos/index.html">Repo cards</a><a class="button-secondary" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a><a class="button-secondary" href="../assets/planning-snapshot.json">JSON snapshot</a></div>
           </section>'''
@@ -160,6 +161,8 @@ def build_page(snapshot: dict[str, object]) -> str:
               <li id="priority-high"><strong>high</strong>: central repo or site-heavy flow worth reviewing first.</li>
               <li id="priority-medium"><strong>medium</strong>: useful plan, but still blocked by missing wiring or follow-up work.</li>
               <li id="priority-normal"><strong>normal</strong>: valid planning candidate without urgency signal.</li>
+              <li id="apply-ready"><strong>apply: ready</strong>: no current blockers in the planner contract.</li>
+              <li id="apply-blocked"><strong>apply: blocked</strong>: planner sees explicit blockers that should be cleared before apply review.</li>
             </ul>
           </section>
           {cards_html}

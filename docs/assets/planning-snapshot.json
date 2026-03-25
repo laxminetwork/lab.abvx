@@ -11,6 +11,11 @@
       "title": "chore(set): plan config apply for markoblogo/AGENTS.md_generator",
       "status_hint": "needs-wiring",
       "priority_hint": "medium",
+      "apply_readiness": "blocked",
+      "blocked_by": [
+        "agentsgen.repomap is in registry but not yet wired into SET action inputs",
+        "agentsgen.snippets is in registry but not yet wired into SET action inputs"
+      ],
       "next_action_label": "Resolve unmapped fields",
       "recommended_operator_step": "agentsgen.repomap is in registry but not yet wired into SET action inputs",
       "next_shell_command": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
@@ -42,6 +47,11 @@
           "version": 1,
           "kind": "set-pr-payload",
           "repo": "markoblogo/AGENTS.md_generator",
+          "apply_readiness": "blocked",
+          "blocked_by": [
+            "agentsgen.repomap is in registry but not yet wired into SET action inputs",
+            "agentsgen.snippets is in registry but not yet wired into SET action inputs"
+          ],
           "next_action_label": "Resolve unmapped fields",
           "recommended_operator_step": "agentsgen.repomap is in registry but not yet wired into SET action inputs",
           "next_shell_command": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
@@ -104,6 +114,8 @@
       "title": "chore(set): plan config apply for markoblogo/lab.abvx",
       "status_hint": "ready-for-review",
       "priority_hint": "high",
+      "apply_readiness": "ready",
+      "blocked_by": [],
       "next_action_label": "Review and apply planned workflow",
       "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
       "next_shell_command": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
@@ -141,6 +153,8 @@
           "version": 1,
           "kind": "set-pr-payload",
           "repo": "markoblogo/lab.abvx",
+          "apply_readiness": "ready",
+          "blocked_by": [],
           "next_action_label": "Review and apply planned workflow",
           "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
           "next_shell_command": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
