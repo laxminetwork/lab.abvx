@@ -20,52 +20,53 @@
         "top_ranked_files": [
           {
             "path": "src/agentsgen/cli.py",
-            "score": 45,
+            "score": 85,
+            "changed": false,
+            "entrypoint": false
+          },
+          {
+            "path": "docs/ai/repomap.compact.md",
+            "score": 71,
+            "changed": true,
+            "entrypoint": false
+          },
+          {
+            "path": ".github/workflows/set.yml",
+            "score": 70,
+            "changed": true,
+            "entrypoint": false
+          },
+          {
+            "path": "src/agentsgen/understand.py",
+            "score": 61,
             "changed": false,
             "entrypoint": false
           },
           {
             "path": "tests/test_understand_cli.py",
-            "score": 45,
-            "changed": true,
-            "entrypoint": false
-          },
-          {
-            "path": "src/agentsgen/actions.py",
-            "score": 42,
-            "changed": false,
-            "entrypoint": false
-          },
-          {
-            "path": "src/agentsgen/config.py",
-            "score": 34,
-            "changed": false,
-            "entrypoint": false
-          },
-          {
-            "path": "src/agentsgen/model.py",
-            "score": 34,
+            "score": 55,
             "changed": false,
             "entrypoint": false
           }
         ],
         "active_slice": {
-          "mode": "full",
-          "focus": null,
+          "mode": "focus",
+          "focus": "understand",
           "changed_only": false,
           "slice_files_count": 20
-        }
+        },
+        "slice_source": "artifact-backed"
       }
     },
     {
       "repo": "markoblogo/lab.abvx",
       "status": "completed",
       "conclusion": "success",
-      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23550618201",
+      "html_url": "https://github.com/markoblogo/lab.abvx/actions/runs/23551216432",
       "name": "pages build and deployment",
       "head_branch": "main",
       "event": "dynamic",
-      "updated_at": "2026-03-25T15:57:49Z",
+      "updated_at": "2026-03-25T16:10:29Z",
       "workflow_sync_status": "matches",
       "operator_queue": "ready-now",
       "repomap_snapshot": {
@@ -78,7 +79,8 @@
           "focus": null,
           "changed_only": false,
           "slice_files_count": 0
-        }
+        },
+        "slice_source": "disabled"
       }
     }
   ]

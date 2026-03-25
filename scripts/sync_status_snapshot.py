@@ -101,8 +101,9 @@ def build_page(entries: list[dict[str, object]]) -> str:
             focus = active_slice.get('focus')
             mode = active_slice.get('mode', 'full')
             files_count = active_slice.get('slice_files_count', 0)
+            slice_source = repomap_snapshot.get('slice_source', 'policy-default')
             slice_label = mode if not focus else f"{mode} ({focus})"
-            slice_line = f'<li>Active slice: {slice_label}; ranked files: {files_count}</li>'
+            slice_line = f'<li>Active slice: {slice_label}; ranked files: {files_count}</li><li>Slice source: {slice_source}</li>'
         top_ranked = repomap_snapshot.get('top_ranked_files', []) if isinstance(repomap_snapshot, dict) else []
         top_ranked_html = ''
         if top_ranked:

@@ -69,6 +69,7 @@ def load_repomap_snapshot(
             'top_ranked_limit': top_ranked_limit,
             'top_ranked_files': [],
             'active_slice': default_slice,
+            'slice_source': 'disabled',
         }
     if repo_root is None:
         return {
@@ -77,12 +78,14 @@ def load_repomap_snapshot(
             'top_ranked_limit': top_ranked_limit,
             'top_ranked_files': [],
             'active_slice': default_slice,
+            'slice_source': 'not-checked',
         }
 
     compact_path = repo_root / 'docs' / 'ai' / 'repomap.compact.md'
     knowledge_path = repo_root / 'agents.knowledge.json'
     top_ranked_files: list[dict[str, object]] = []
     active_slice = dict(default_slice)
+    slice_source = 'policy-default'
     if knowledge_path.exists():
         try:
             knowledge = json.loads(knowledge_path.read_text())
@@ -91,6 +94,7 @@ def load_repomap_snapshot(
         relevance = knowledge.get('relevance', [])
         slice_meta = knowledge.get('slice', {}) if isinstance(knowledge.get('slice'), dict) else {}
         if isinstance(relevance, list):
+            slice_source = 'artifact-backed'
             active_slice['slice_files_count'] = len(relevance)
             for item in relevance[:top_ranked_limit]:
                 if not isinstance(item, dict):
@@ -116,6 +120,7 @@ def load_repomap_snapshot(
         'top_ranked_limit': top_ranked_limit,
         'top_ranked_files': top_ranked_files,
         'active_slice': active_slice,
+        'slice_source': slice_source,
     }
 
 
@@ -250,11 +255,13 @@ def build_page(snapshot: dict[str, object]) -> str:
             focus = active_slice.get('focus')
             mode = active_slice.get('mode', 'full')
             files_count = active_slice.get('slice_files_count', 0)
+            slice_source = repomap_snapshot.get('slice_source', 'policy-default')
             slice_label = mode if not focus else f"{mode} ({focus})"
             repomap_html = (
                 f"<div class=\"small-note\">Compact repomap: {repomap_snapshot.get('status', 'not-checked')} "
                 f"(budget {repomap_snapshot.get('compact_budget', 'n/a')}, top files {repomap_snapshot.get('top_ranked_limit', 'n/a')})</div>"
                 f"<div class=\"small-note\">Active slice: {slice_label}; ranked files: {files_count}</div>"
+                f"<div class=\"small-note\">Slice source: {slice_source}</div>"
                 f"{ranked_html}"
             )
         cards.append(
