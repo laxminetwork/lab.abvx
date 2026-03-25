@@ -18,6 +18,14 @@
       "next_action_label": "Review and apply planned workflow",
       "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
       "next_shell_command": "git checkout -b codex/set-plan-markoblogo-AGENTS.md_generator",
+      "workflow_sync_status": "matches",
+      "workflow_check": {
+        "repo_root": "/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator",
+        "workflow_path": ".github/workflows/set.yml",
+        "actual_path": "/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator/.github/workflows/set.yml",
+        "status": "matches",
+        "diff_preview": []
+      },
       "unmapped_count": 0,
       "plan": {
         "version": 1,
@@ -167,7 +175,14 @@
         "notes": [
           "This planner does not open a PR or write files to the target repo.",
           "Use the output to review the intended SET workflow before any future apply step."
-        ]
+        ],
+        "workflow_check": {
+          "repo_root": "/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator",
+          "workflow_path": ".github/workflows/set.yml",
+          "actual_path": "/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator/.github/workflows/set.yml",
+          "status": "matches",
+          "diff_preview": []
+        }
       },
       "files": [
         "apply-simulation.json",
@@ -191,6 +206,14 @@
       "next_action_label": "Review and apply planned workflow",
       "recommended_operator_step": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
       "next_shell_command": "git checkout -b codex/set-plan-markoblogo-lab.abvx",
+      "workflow_sync_status": "matches",
+      "workflow_check": {
+        "repo_root": "/Users/antonbiletskiy-volokh/Downloads/Projects/Lab",
+        "workflow_path": ".github/workflows/set.yml",
+        "actual_path": "/Users/antonbiletskiy-volokh/Downloads/Projects/Lab/.github/workflows/set.yml",
+        "status": "matches",
+        "diff_preview": []
+      },
       "unmapped_count": 0,
       "plan": {
         "version": 1,
@@ -346,7 +369,14 @@
         "notes": [
           "This planner does not open a PR or write files to the target repo.",
           "Use the output to review the intended SET workflow before any future apply step."
-        ]
+        ],
+        "workflow_check": {
+          "repo_root": "/Users/antonbiletskiy-volokh/Downloads/Projects/Lab",
+          "workflow_path": ".github/workflows/set.yml",
+          "actual_path": "/Users/antonbiletskiy-volokh/Downloads/Projects/Lab/.github/workflows/set.yml",
+          "status": "matches",
+          "diff_preview": []
+        }
       },
       "files": [
         "apply-simulation.json",

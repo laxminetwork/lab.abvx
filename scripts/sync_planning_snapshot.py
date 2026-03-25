@@ -8,6 +8,10 @@ from pathlib import Path
 
 LAB_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SET_PLANNER = Path('/Users/antonbiletskiy-volokh/Downloads/Projects/SET/scripts/plan_config_apply.py')
+DEFAULT_REPO_ROOTS = {
+    'markoblogo/lab.abvx': '/Users/antonbiletskiy-volokh/Downloads/Projects/Lab',
+    'markoblogo/AGENTS.md_generator': '/Users/antonbiletskiy-volokh/Downloads/Projects/AGENTS.md Generator',
+}
 
 
 def _path(env_name: str, default: Path) -> Path:
@@ -27,11 +31,24 @@ def get_page_path() -> Path:
     return _path('LAB_PLANNING_PAGE_PATH', LAB_ROOT / 'docs' / 'planning' / 'index.html')
 
 
+def get_repo_roots() -> dict[str, str]:
+    raw = os.environ.get('LAB_REPO_ROOTS_JSON', '').strip()
+    if raw:
+        loaded = json.loads(raw)
+        if isinstance(loaded, dict):
+            return {str(key): str(value) for key, value in loaded.items()}
+    return dict(DEFAULT_REPO_ROOTS)
+
+
 def run_planner() -> dict[str, object]:
     planner = get_planner_path()
     with tempfile.TemporaryDirectory() as tmpdir:
+        repo_roots = get_repo_roots()
+        command = ['python3', str(planner), '--all', '--export-dir', tmpdir, '--format', 'json']
+        for repo, path in sorted(repo_roots.items()):
+            command.extend(['--repo-root', f'{repo}={path}'])
         subprocess.run(
-            ['python3', str(planner), '--all', '--export-dir', tmpdir, '--format', 'json'],
+            command,
             check=True,
             capture_output=True,
             text=True,
@@ -110,6 +127,7 @@ def build_page(snapshot: dict[str, object]) -> str:
         recommended_step = entry.get('recommended_operator_step') or review_payload.get('recommended_operator_step') or 'n/a'
         next_command = entry.get('next_shell_command') or review_payload.get('next_shell_command') or 'n/a'
         apply_readiness = entry.get('apply_readiness') or review_payload.get('apply_readiness') or 'unknown'
+        workflow_sync_status = entry.get('workflow_sync_status') or 'not-checked'
         blocked_by = entry.get('blocked_by') or review_payload.get('blocked_by') or []
         capabilities = plan.get('capabilities', [])
         wiring_gaps = entry.get('wiring_gaps') or [cap.get('wiring_gap') for cap in capabilities if isinstance(cap, dict) and cap.get('wiring_gap')]
@@ -132,7 +150,7 @@ def build_page(snapshot: dict[str, object]) -> str:
         cards.append(
             f'''<section id="{card_slug}" class="page-panel">
             <h2>{index}. {entry['repo']}</h2>
-            <p class="small-note">Queue: {entry.get('operator_queue', review_payload.get('operator_queue', 'review-later'))} | Status: {entry['status_hint']} | Priority: {entry['priority_hint']} | Apply: {apply_readiness}</p>
+            <p class="small-note">Queue: {entry.get('operator_queue', review_payload.get('operator_queue', 'review-later'))} | Status: {entry['status_hint']} | Priority: {entry['priority_hint']} | Apply: {apply_readiness} | Workflow sync: {workflow_sync_status}</p>
             <p class="small-note"><a href="#status-{entry['status_hint']}">Why {entry['status_hint']}?</a> | <a href="#priority-{entry['priority_hint']}">Why {entry['priority_hint']}?</a>{' | <a href="#' + card_slug + '-blocked">Show blockers</a>' if blocked_by or wiring_gaps else ''}</p>
             <ul class="bullet-list">
               <li>Workflow preset: {workflow['with'].get('workflow_preset', 'none')}</li>
@@ -140,6 +158,7 @@ def build_page(snapshot: dict[str, object]) -> str:
               <li>Suggested branch: {gh_pr['head']}</li>
               <li>Suggested title: {gh_pr['title']}</li>
               <li>{next_action_label}: {recommended_step}</li>
+              <li>Workflow sync status: {workflow_sync_status}</li>
             </ul>
             <div class="small-note">Copy next command:</div>
             <pre><code>{next_command}</code></pre>

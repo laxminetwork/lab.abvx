@@ -15,12 +15,15 @@ def _path(env_name: str, default: Path) -> Path:
 def main() -> int:
     registry_path = _path('LAB_REGISTRY_SNAPSHOT_PATH', LAB_ROOT / 'docs' / 'assets' / 'registry-snapshot.json')
     status_path = _path('LAB_STATUS_SNAPSHOT_PATH', LAB_ROOT / 'docs' / 'assets' / 'status-snapshot.json')
+    planning_path = _path('LAB_PLANNING_SNAPSHOT_PATH', LAB_ROOT / 'docs' / 'assets' / 'planning-snapshot.json')
     output_json = _path('LAB_REPO_CARDS_SNAPSHOT_PATH', LAB_ROOT / 'docs' / 'assets' / 'repo-cards-snapshot.json')
     output_html = _path('LAB_REPO_CARDS_PAGE_PATH', LAB_ROOT / 'docs' / 'repos' / 'index.html')
 
     registry = json.loads(registry_path.read_text())
     status = json.loads(status_path.read_text())
+    planning = json.loads(planning_path.read_text()) if planning_path.exists() else {'repos': []}
     status_map = {entry['repo']: entry for entry in status.get('repos', [])}
+    planning_map = {entry['repo']: entry for entry in planning.get('repos', [])}
 
     cards = []
     for entry in registry.get('repos', []):
@@ -29,6 +32,7 @@ def main() -> int:
         presets = entry.get('presets', [])
         site = (entry.get('site') or {}).get('url') if isinstance(entry.get('site'), dict) else None
         workflow = status_map.get(repo, {})
+        planning_entry = planning_map.get(repo, {})
         agentsgen = tools.get('agentsgen', {}) if isinstance(tools, dict) else {}
         enabled = []
         for key in ('init', 'pack', 'check', 'repomap', 'snippets'):
@@ -45,6 +49,7 @@ def main() -> int:
                 'site_url': site,
                 'agentsgen_enabled': enabled,
                 'workflow': workflow,
+                'planning': planning_entry,
             }
         )
 
@@ -56,6 +61,7 @@ def main() -> int:
     sections = []
     for card in cards:
         workflow = card['workflow']
+        planning = card.get('planning', {}) if isinstance(card.get('planning'), dict) else {}
         latest_run = workflow.get('html_url', '')
         latest_run_button = (
             f'<a class="button-secondary" href="{latest_run}">Latest run</a>' if latest_run else ''
@@ -67,6 +73,8 @@ def main() -> int:
         )
         tool_line = ', '.join(card['agentsgen_enabled']) if card['agentsgen_enabled'] else 'none'
         presets = ', '.join(card['presets']) or 'none'
+        workflow_sync_status = planning.get('workflow_sync_status', 'not-checked')
+        operator_queue = planning.get('operator_queue', 'review-later')
         sections.append(
             f'''<section class="page-panel">
             <h2>{card['repo']}</h2>
@@ -77,6 +85,8 @@ def main() -> int:
               <li>Workflow status: {workflow.get('status', 'unknown')}</li>
               <li>Conclusion: {workflow.get('conclusion', 'unknown')}</li>
               <li>Workflow: {workflow.get('name', 'n/a')}</li>
+              <li>Workflow sync: {workflow_sync_status}</li>
+              <li>Operator queue: {operator_queue}</li>
             </ul>
             <div class="link-grid"><a class="button" href="../registry/index.html">Registry</a><a class="button-secondary" href="../status/index.html">Status</a>{latest_run_button}</div>
           </section>'''
