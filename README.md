@@ -10,6 +10,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Tools
 
+- [Registry snapshot](https://lab.abvx.xyz/registry/) — Read-only view of repo baselines from the SET central registry.
 - [repomap](https://lab.abvx.xyz/tools/repomap/) — Deterministic repo map + import graph artifacts (read-only).
 - [agentsgen snippets](https://lab.abvx.xyz/tools/agentsgen-snippets/) — Canonical README snippet extraction with deterministic CI drift checks.
 - [agentsgen presets](https://lab.abvx.xyz/tools/agentsgen-presets/) — Copy-paste setup for common stacks (explicit commands, no guesswork).
@@ -34,6 +35,9 @@ They still ship together as one package: `agentsgen`.
 
 ### What's inside
 
+
+- Registry snapshot generator: `scripts/sync_registry_snapshot.py`
+- Snapshot outputs: `docs/registry/index.html`, `docs/assets/registry-snapshot.json`
 - Home page: `docs/index.html`
 - Tool pages: `docs/tools/<slug>/index.html`
 - SEO basics: `docs/robots.txt` and `docs/sitemap.xml`
