@@ -1,7 +1,7 @@
 # ABVX Lab
 
 A static hub and read-only control plane for ABVX developer tools.
-The home page acts as an editorial index: `SET` is the orchestration entrypoint, the control plane is summarized in a compact snapshot, and the tool catalog is grouped by role.
+The home page acts as an editorial index: `SET` is the orchestration entrypoint, `ID` is the profile portability layer, the control plane is summarized in a compact snapshot, and the tool catalog is grouped by role.
 
 Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
@@ -28,6 +28,7 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 ### Repo docs & agent context
 
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/) — Safe repo docs toolchain for coding agents.
+- [ID Protocol](https://github.com/markoblogo/ID) — Portable human-AI profile protocol used across tools and orchestration flows.
 - [agentsgen init](https://lab.abvx.xyz/tools/agentsgen-init/) — Bootstrap `.agentsgen.json` + AGENTS/RUNBOOK marker sections.
 - [agentsgen update](https://lab.abvx.xyz/tools/agentsgen-update/) — Patch managed marker sections only.
 - [agentsgen pack](https://lab.abvx.xyz/tools/agentsgen-pack/) — Generate AI docs bundle with repo and site mode.
@@ -104,6 +105,7 @@ They still ship together as one package: `agentsgen`.
 
 - [repomap](https://lab.abvx.xyz/tools/repomap/)
 - [set](https://lab.abvx.xyz/tools/set/)
+- [id-protocol](https://github.com/markoblogo/ID)
 - [agentsgen](https://lab.abvx.xyz/tools/agentsgen/)
 - [agentsgen-init](https://lab.abvx.xyz/tools/agentsgen-init/)
 - [agentsgen-update](https://lab.abvx.xyz/tools/agentsgen-update/)
@@ -144,3 +146,9 @@ GitHub Pages publishes this site from `/docs` on `main`.
 Flow: commit -> push -> wait for Pages.
 
 If you change asset URLs or ship a static asset that browsers may cache aggressively, add or update the cache-busting query suffix in the HTML.
+
+## Ecosystem links
+
+- SET orchestration: https://github.com/markoblogo/SET
+- ID protocol repo: https://github.com/markoblogo/ID
+- agentsgen repo: https://github.com/markoblogo/AGENTS.md_generator
