@@ -4,91 +4,69 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ABVX Lab | Tools for AI-assisted coding</title>
-    <meta
-      name="description"
-      content="Small, shippable tools that make coding agents safer and workflows faster. Orchestrated by SET."
-    />
+    <meta name="description" content="Small, shippable tools that make coding agents safer and workflows faster. Orchestrated by SET." />
     <link rel="canonical" href="https://lab.abvx.xyz/" />
     <meta property="og:title" content="ABVX Lab | Tools for AI-assisted coding" />
-    <meta
-      property="og:description"
-      content="Small, shippable tools that make coding agents safer and workflows faster. Orchestrated by SET."
-    />
+    <meta property="og:description" content="Small, shippable tools that make coding agents safer and workflows faster. Orchestrated by SET." />
     <meta property="og:url" content="https://lab.abvx.xyz/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="assets/asciitheme.css?v20260319d" />
-    <link rel="stylesheet" href="assets/styles.css?v20260401b" />
+    <link rel="stylesheet" href="assets/styles.css?v20260401c" />
     <style>
       :root {
         --home-blue: #173f96;
-        --home-green: #148f57;
-        --home-cream: #f3efe8;
-        --home-ink: #0f172a;
-        --home-muted: #556070;
-        --home-line: rgba(23, 63, 150, 0.16);
-        --home-strong-line: rgba(23, 63, 150, 0.3);
-        --home-panel: rgba(255, 255, 255, 0.66);
-        --home-soft: rgba(23, 63, 150, 0.05);
+        --home-green: #198754;
+        --home-ink: #152a55;
+        --home-muted: #61708d;
+        --home-line: rgba(21, 42, 85, 0.14);
+        --home-line-strong: rgba(21, 42, 85, 0.3);
+        --home-surface: #fcfaf5;
+        --home-surface-strong: #f1ece1;
       }
 
       [data-ascii-mode="dark"] {
         --home-blue: #9ab7ff;
-        --home-green: #5ac28e;
-        --home-cream: rgba(255, 255, 255, 0.03);
+        --home-green: #58b985;
         --home-ink: #e6eeff;
         --home-muted: #9eadc6;
         --home-line: rgba(154, 183, 255, 0.16);
-        --home-strong-line: rgba(154, 183, 255, 0.3);
-        --home-panel: rgba(255, 255, 255, 0.025);
-        --home-soft: rgba(154, 183, 255, 0.055);
+        --home-line-strong: rgba(154, 183, 255, 0.3);
+        --home-surface: #111923;
+        --home-surface-strong: #16202b;
       }
 
       .home-main {
-        padding-top: 1rem;
-        padding-bottom: 3rem;
+        padding-top: 0.35rem;
+        padding-bottom: 2.7rem;
       }
 
       .home-shell {
         display: grid;
-        gap: 1.5rem;
+        gap: 1.45rem;
       }
 
       .home-hero {
-        position: relative;
-        overflow: hidden;
-        border: 1px solid var(--home-line);
-        background:
-          linear-gradient(135deg, rgba(23, 63, 150, 0.09), rgba(20, 143, 87, 0.06)),
-          var(--home-panel);
-      }
-
-      .home-hero::after {
-        content: "";
-        position: absolute;
-        inset: auto -40px -52px auto;
-        width: 220px;
-        height: 220px;
-        border-radius: 50%;
-        background: radial-gradient(circle, rgba(20, 143, 87, 0.15), transparent 68%);
-        pointer-events: none;
+        padding: 1.3rem 1.35rem 1.25rem;
+        border-top: 3px solid var(--home-line-strong);
+        border-bottom: 1px solid var(--home-line);
+        background: linear-gradient(180deg, var(--home-surface), var(--home-surface-strong));
       }
 
       .home-hero-grid {
         display: grid;
-        grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
-        gap: 1.5rem;
+        grid-template-columns: minmax(0, 1.45fr) minmax(250px, 0.8fr);
+        gap: 1.2rem;
         align-items: start;
       }
 
       .home-kicker {
         display: flex;
-        gap: 0.6rem;
+        gap: 0.55rem;
         flex-wrap: wrap;
-        align-items: center;
-        margin-bottom: 0.9rem;
         color: var(--home-muted);
+        margin-bottom: 0.8rem;
       }
 
       .home-kicker .hero-kicker__brand {
@@ -101,39 +79,37 @@
 
       .home-hero h1 {
         margin: 0;
-        max-width: 11ch;
-        font-size: clamp(2.7rem, 6vw, 4.9rem);
+        max-width: 9ch;
+        font-size: clamp(2.3rem, 4.6vw, 4rem);
         line-height: 0.94;
-        letter-spacing: -0.055em;
         color: var(--home-blue);
       }
 
       .home-hero .lead {
-        margin-top: 1rem;
-        max-width: 58ch;
-        font-size: 1.02rem;
+        margin-top: 0.8rem;
+        max-width: 46ch;
         color: var(--home-ink);
+        font-size: 0.98rem;
       }
 
       .home-note {
-        margin-top: 0.8rem;
-        max-width: 58ch;
+        margin-top: 0.72rem;
+        max-width: 48ch;
         color: var(--home-muted);
       }
 
       .home-cta {
         display: flex;
-        gap: 0.7rem;
+        gap: 0.65rem;
         flex-wrap: wrap;
-        margin-top: 1.2rem;
+        margin-top: 1rem;
       }
 
       .entry-panel {
         display: grid;
-        gap: 0.8rem;
-        padding-left: 1.25rem;
+        gap: 0.75rem;
+        padding-left: 1rem;
         border-left: 1px solid var(--home-line);
-        align-content: start;
       }
 
       .entry-panel .kicker {
@@ -143,8 +119,7 @@
       .entry-panel h2 {
         margin: 0;
         color: var(--home-blue);
-        font-size: clamp(1.85rem, 2.6vw, 2.5rem);
-        letter-spacing: -0.05em;
+        font-size: clamp(1.5rem, 2.4vw, 2rem);
       }
 
       .entry-panel p {
@@ -154,15 +129,15 @@
 
       .entry-panel code {
         display: inline-block;
-        padding: 0.16rem 0.42rem;
+        padding: 0.14rem 0.4rem;
         border: 1px solid var(--home-line);
-        background: rgba(255, 255, 255, 0.55);
+        background: color-mix(in srgb, var(--home-surface-strong) 78%, transparent);
       }
 
       .entry-links {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.55rem;
       }
 
       .flow-section {
@@ -172,15 +147,14 @@
 
       .section-head {
         display: grid;
-        gap: 0.35rem;
-        max-width: 64ch;
+        gap: 0.3rem;
+        max-width: 60ch;
       }
 
       .section-head h2 {
         margin: 0;
         color: var(--home-blue);
-        font-size: clamp(1.55rem, 2.6vw, 2.35rem);
-        letter-spacing: -0.04em;
+        font-size: clamp(1.38rem, 2vw, 1.85rem);
       }
 
       .section-head p {
@@ -188,19 +162,31 @@
         color: var(--home-muted);
       }
 
+      .summary-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+      }
+
+      .summary-chip {
+        padding: 0.4rem 0.65rem;
+        border: 1px solid var(--home-line);
+        color: var(--home-muted);
+        background: color-mix(in srgb, var(--home-surface-strong) 75%, transparent);
+      }
+
       .snapshot-strip {
         display: grid;
-        gap: 0;
         border-top: 1px solid var(--home-line);
         border-bottom: 1px solid var(--home-line);
       }
 
       .snapshot-row {
         display: grid;
-        grid-template-columns: minmax(180px, 1.1fr) minmax(110px, 140px) minmax(120px, 140px) minmax(170px, 1fr) 120px;
+        grid-template-columns: minmax(180px, 1.1fr) minmax(110px, 140px) minmax(100px, 120px) minmax(160px, 1fr) 110px;
         gap: 1rem;
         align-items: center;
-        padding: 1rem 0;
+        padding: 0.9rem 0;
         border-top: 1px solid var(--home-line);
       }
 
@@ -231,165 +217,135 @@
         align-items: center;
         justify-content: center;
         width: fit-content;
-        padding: 0.18rem 0.52rem;
+        padding: 0.16rem 0.5rem;
         border: 1px solid var(--home-line);
         border-radius: 999px;
         color: var(--home-muted);
-        font-size: 0.78rem;
+        font-size: 0.76rem;
         white-space: nowrap;
       }
 
       .queue-pill.ready {
         color: var(--home-green);
-        border-color: color-mix(in srgb, var(--home-green) 40%, var(--home-line));
+        border-color: color-mix(in srgb, var(--home-green) 42%, var(--home-line));
       }
 
       .control-links {
         display: flex;
-        gap: 0.7rem 1rem;
-        flex-wrap: wrap;
-        padding-top: 0.35rem;
-      }
-
-      .summary-bar {
-        display: flex;
-        gap: 0.7rem;
+        gap: 0.65rem 1rem;
         flex-wrap: wrap;
       }
 
-      .summary-chip {
-        padding: 0.45rem 0.7rem;
-        border: 1px solid var(--home-line);
-        background: var(--home-soft);
-        color: var(--home-muted);
-      }
-
-      .catalog-stage {
+      .tool-stage {
         display: grid;
-        gap: 1.1rem;
-      }
-
-      .catalog-tiles {
-        display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
         gap: 1rem;
       }
 
-      .catalog-card {
+      .tool-primary {
         display: grid;
-        gap: 0.7rem;
-        min-height: 100%;
-        padding: 1.1rem 1.1rem 1rem;
-        border-top: 2px solid var(--home-strong-line);
-        background: linear-gradient(180deg, rgba(245,242,234,0.72), rgba(255,255,255,0));
+        grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.9fr);
+        gap: 1.15rem;
+        padding: 1.15rem 1.2rem 1.05rem;
+        border-top: 3px solid var(--home-line-strong);
+        border-bottom: 1px solid var(--home-line);
+        background: linear-gradient(180deg, var(--home-surface), var(--home-surface-strong));
       }
 
-      .catalog-card.primary {
-        grid-column: span 12;
-        padding: 1.3rem 1.25rem 1.15rem;
-        border-top-width: 3px;
+      .tool-primary .kicker {
+        margin-bottom: 0.45rem;
       }
 
-      .catalog-card.secondary {
-        grid-column: span 4;
-      }
-
-      .catalog-card .kicker {
-        margin-bottom: 0;
-      }
-
-      .catalog-card h3 {
+      .tool-primary h3,
+      .tool-card h3 {
         margin: 0;
         color: var(--home-blue);
-        font-size: clamp(1.35rem, 2vw, 1.9rem);
-        letter-spacing: -0.03em;
       }
 
-      .catalog-card.primary h3 {
-        font-size: clamp(2.1rem, 4vw, 3rem);
+      .tool-primary h3 {
+        font-size: clamp(2rem, 4vw, 2.8rem);
       }
 
-      .catalog-card p {
+      .tool-primary p,
+      .tool-card p {
         margin: 0;
-        max-width: 60ch;
         color: var(--home-ink);
       }
 
-      .catalog-card.primary p {
-        max-width: 48ch;
-        font-size: 1rem;
-      }
-
-      .catalog-card-links {
+      .tool-primary-links,
+      .tool-card-links {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.65rem;
+        gap: 0.6rem;
       }
 
-      .catalog-directory {
+      .tool-secondary {
         display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 1rem 1.5rem;
-        padding-top: 1.2rem;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .tool-card {
+        display: grid;
+        gap: 0.6rem;
+        padding: 1rem 1rem 0.95rem;
+        border-top: 2px solid var(--home-line-strong);
+        background: color-mix(in srgb, var(--home-surface-strong) 72%, transparent);
+      }
+
+      .tool-directory {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem 1.6rem;
+        padding-top: 1rem;
         border-top: 1px solid var(--home-line);
       }
 
-      .mini-group {
+      .tool-column {
         display: grid;
-        gap: 0.42rem;
+        gap: 0.4rem;
         align-content: start;
       }
 
-      .mini-group h3 {
+      .tool-column h3 {
         margin: 0;
         color: var(--home-blue);
-        font-size: 0.95rem;
-        letter-spacing: -0.02em;
+        font-size: 0.96rem;
       }
 
-      .mini-links {
+      .tool-links-list {
         display: grid;
         gap: 0.22rem;
       }
 
-      .mini-links a,
-      .mini-links span {
+      .tool-links-list a,
+      .tool-links-list span {
         color: var(--home-ink);
       }
 
-      .mini-links small {
+      .tool-links-list small {
         color: var(--home-muted);
       }
 
-      @media (max-width: 960px) {
+      @media (max-width: 980px) {
         .home-hero-grid,
-        .catalog-tiles,
-        .catalog-directory {
+        .tool-primary,
+        .tool-secondary,
+        .tool-directory {
           grid-template-columns: 1fr;
-        }
-
-        .catalog-card.secondary,
-        .catalog-card.primary {
-          grid-column: auto;
         }
 
         .entry-panel {
           padding-left: 0;
           border-left: none;
           border-top: 1px solid var(--home-line);
-          padding-top: 1rem;
+          padding-top: 0.95rem;
         }
       }
 
       @media (max-width: 760px) {
-        .snapshot-row,
-        .catalog-card {
+        .snapshot-row {
           grid-template-columns: 1fr;
-          gap: 0.35rem;
-        }
-
-        .catalog-card-links {
-          justify-content: flex-start;
+          gap: 0.3rem;
         }
       }
     </style>
@@ -416,7 +372,7 @@
 
         <main class="home-main">
           <div class="home-shell">
-            <section class="hero-panel hero-panel--lab home-hero">
+            <section class="home-hero">
               <div class="home-hero-grid">
                 <div>
                   <div class="home-kicker">
@@ -427,13 +383,8 @@
                     <span>read-only control plane</span>
                   </div>
                   <h1>Tools for AI-assisted coding</h1>
-                  <p class="lead">
-                    Small, shippable tools that make coding agents safer and workflows faster. Most start as internal tools;
-                    if they survive real usage, they become open source.
-                  </p>
-                  <p class="small-note home-note">
-                    One entrypoint, one compact control-plane snapshot, and one grouped catalog below. The goal is a calmer front page that still scales with the ecosystem.
-                  </p>
+                  <p class="lead">Small, shippable tools that make coding agents safer and workflows faster. One entrypoint, one control-plane view, and one public tool map.</p>
+                  <p class="small-note home-note">The front page should explain the ecosystem quickly, then get out of the way.</p>
                   <div class="home-cta">
                     <a class="button" href="#tools">Browse tools</a>
                     <a class="button-secondary" href="planning/index.html">Planning queue</a>
@@ -443,7 +394,7 @@
                 <div class="entry-panel">
                   <span class="kicker">Primary entrypoint</span>
                   <h2>SET</h2>
-                  <p>Thin GitHub Action orchestrator for presets, repo-docs, site-aware flows, repomap, and optional proof-loop runs.</p>
+                  <p>Thin GitHub Action orchestrator for repo-docs, repomap, proof-loop, registry review, and repo-local ID hooks.</p>
                   <p><code>uses: markoblogo/SET@main</code></p>
                   <p><code>workflow_preset: site-ai</code></p>
                   <div class="entry-links">
@@ -459,7 +410,7 @@
               <div class="section-head">
                 <span class="kicker">ABVX control plane</span>
                 <h2>Control plane snapshot</h2>
-                <p>One quiet read-only summary of what is registered, what ran recently, and what still needs review. The detailed pages stay below, but the front page should already tell you where the system stands.</p>
+                <p>Recent read-only state for the repos that actually drive the system.</p>
               </div>
 
               <div class="summary-bar">
@@ -525,57 +476,57 @@
               <div class="section-head">
                 <span class="kicker">ABVX tools</span>
                 <h2>Tool map</h2>
-                <p>Four products carry most of the ecosystem. Everything else stays visible, but moves into a quieter directory underneath.</p>
+                <p>The ecosystem has one orchestrator, three primary companion products, and a smaller public toolkit.</p>
               </div>
 
-              <div class="catalog-stage">
-                <div class="catalog-tiles">
-                  <article class="catalog-card primary">
+              <div class="tool-stage">
+                <article class="tool-primary">
+                  <div>
                     <span class="kicker">Primary orchestrator</span>
                     <h3>SET</h3>
                     <p>One entrypoint for repo-docs, repomap, proof-loop, registry review, and repo-local hook orchestration.</p>
-                    <div class="catalog-card-links">
-                      <a href="tools/set/index.html">Tool page</a>
-                      <a href="https://github.com/markoblogo/SET">GitHub</a>
-                      <a href="https://github.com/markoblogo/SET/releases/tag/v0.1.0">Release</a>
-                    </div>
-                  </article>
+                  </div>
+                  <div class="tool-primary-links">
+                    <a href="tools/set/index.html">Tool page</a>
+                    <a href="https://github.com/markoblogo/SET">GitHub</a>
+                    <a href="https://github.com/markoblogo/SET/releases/tag/v0.1.0">Release</a>
+                  </div>
+                </article>
 
-                  <article class="catalog-card secondary">
+                <div class="tool-secondary">
+                  <article class="tool-card">
                     <span class="kicker">Repo docs runtime</span>
                     <h3>agentsgen</h3>
                     <p>Agent docs, AI bundles, snippets, repomap, proof artifacts.</p>
-                    <div class="catalog-card-links">
+                    <div class="tool-card-links">
                       <a href="tools/agentsgen/index.html">Tool page</a>
                       <a href="https://github.com/markoblogo/AGENTS.md_generator">GitHub</a>
                     </div>
                   </article>
-
-                  <article class="catalog-card secondary">
+                  <article class="tool-card">
                     <span class="kicker">Portable context</span>
                     <h3>ID</h3>
-                    <p>Portable human-AI profile protocol plus repo-local hooks for SET flows.</p>
-                    <div class="catalog-card-links">
+                    <p>Portable human-AI profile protocol plus repo-local hooks for SET-compatible flows.</p>
+                    <div class="tool-card-links">
                       <a href="tools/id/index.html">Tool page</a>
                       <a href="https://github.com/markoblogo/ID">GitHub</a>
                     </div>
                   </article>
-
-                  <article class="catalog-card secondary">
+                  <article class="tool-card">
                     <span class="kicker">Analysis</span>
                     <h3>repomap</h3>
                     <p>Ranked codebase map with token-budgeted slices for larger repos.</p>
-                    <div class="catalog-card-links">
+                    <div class="tool-card-links">
                       <a href="tools/repomap/index.html">Tool page</a>
                       <a href="https://github.com/markoblogo/AGENTS.md_generator">GitHub</a>
                     </div>
                   </article>
                 </div>
 
-                <div class="catalog-directory">
-                  <section class="mini-group">
+                <div class="tool-directory">
+                  <section class="tool-column">
                     <h3>Repo docs workflow</h3>
-                    <div class="mini-links">
+                    <div class="tool-links-list">
                       <a href="tools/agentsgen-init/index.html">agentsgen init <small>bootstrap repo docs</small></a>
                       <a href="tools/agentsgen-update/index.html">agentsgen update <small>patch managed sections</small></a>
                       <a href="tools/agentsgen-pack/index.html">agentsgen pack <small>generate AI bundles</small></a>
@@ -583,27 +534,24 @@
                       <a href="tools/agentsgen-presets/index.html">agentsgen presets <small>common stack setups</small></a>
                     </div>
                   </section>
-
-                  <section class="mini-group">
+                  <section class="tool-column">
                     <h3>Validation &amp; CI</h3>
-                    <div class="mini-links">
+                    <div class="tool-links-list">
                       <a href="tools/agentsgen-check/index.html">agentsgen check <small>readiness and drift</small></a>
                       <a href="tools/agentsgen-detect/index.html">agentsgen detect <small>stable heuristic scan</small></a>
                       <a href="tools/agentsgen-status/index.html">agentsgen status <small>repo overview</small></a>
                     </div>
                   </section>
-
-                  <section class="mini-group">
+                  <section class="tool-column">
                     <h3>Planned public surfaces</h3>
-                    <div class="mini-links">
+                    <div class="tool-links-list">
                       <span>agentsgen analyze <small>AI visibility score</small></span>
                       <span>agentsgen meta <small>SEO + AI metadata</small></span>
                     </div>
                   </section>
-
-                  <section class="mini-group">
+                  <section class="tool-column">
                     <h3>Publishing &amp; utilities</h3>
-                    <div class="mini-links">
+                    <div class="tool-links-list">
                       <a href="tools/git-tweet/index.html">git-tweet <small>release notes</small></a>
                       <a href="tools/abvx-shortener/index.html">abvx-shortener <small>worker shortener</small></a>
                       <a href="tools/asciitheme/index.html">AsciiTheme <small>tiny CSS kit</small></a>
@@ -613,6 +561,7 @@
                 </div>
               </div>
             </section>
+          </div>
         </main>
 
         <footer class="footer footer--lab">
@@ -623,31 +572,11 @@
             </div>
 
             <div class="social-icons" aria-label="Elsewhere">
-              <a href="https://abvx.substack.com" aria-label="Substack">
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                  <path d="M7 6h10v2H9v2h8a3 3 0 0 1 0 6H7v-2h10v-2H9a3 3 0 0 1 0-6h8V6H7z" fill="currentColor"/>
-                </svg>
-              </a>
-              <a href="https://abvcreative.medium.com" aria-label="Medium">
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                  <path d="M4 7h3l3.5 8L14 7h3l3 10h-2.5l-1.8-6-2.7 6H11l-2.7-6-1.8 6H4L7 7H4z" fill="currentColor"/>
-                </svg>
-              </a>
-              <a href="https://x.com/abv_creative" aria-label="X">
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                  <path d="M7 6h2.6l3 4 3-4H18l-4.2 5.4L18 18h-2.6l-3-4-3 4H7l4.2-6L7 6z" fill="currentColor"/>
-                </svg>
-              </a>
-              <a href="https://www.linkedin.com/in/abvcreative" aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                  <path d="M6 9h3v9H6V9zm1.5-4a1.7 1.7 0 1 1 0 3.4A1.7 1.7 0 0 1 7.5 5zM11 9h3v1.3c.6-.9 1.6-1.6 3.1-1.6 2.2 0 3.8 1.3 3.8 4.3V18h-3v-4.6c0-1.4-.6-2.2-1.8-2.2-1.1 0-2 .7-2 2.2V18h-3V9z" fill="currentColor"/>
-                </svg>
-              </a>
-              <a href="https://bsky.app/profile/abvx.xyz" aria-label="Bluesky">
-                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                  <path d="M12 6c2.6-2.4 6-3.4 6-1.1 0 2.5-2.2 4.2-4.6 5.2 2.4 1 4.6 2.7 4.6 5.2 0 2.3-3.4 1.3-6-1.1-2.6 2.4-6 3.4-6 1.1 0-2.5 2.2-4.2 4.6-5.2C8.2 9.1 6 7.4 6 4.9 6 2.6 9.4 3.6 12 6z" fill="currentColor"/>
-                </svg>
-              </a>
+              <a href="https://abvx.substack.com" aria-label="Substack"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7 6h10v2H9v2h8a3 3 0 0 1 0 6H7v-2h10v-2H9a3 3 0 0 1 0-6h8V6H7z" fill="currentColor"/></svg></a>
+              <a href="https://abvcreative.medium.com" aria-label="Medium"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M4 7h3l3.5 8L14 7h3l3 10h-2.5l-1.8-6-2.7 6H11l-2.7-6-1.8 6H4L7 7H4z" fill="currentColor"/></svg></a>
+              <a href="https://x.com/abv_creative" aria-label="X"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M7 6h2.6l3 4 3-4H18l-4.2 5.4L18 18h-2.6l-3-4-3 4H7l4.2-6L7 6z" fill="currentColor"/></svg></a>
+              <a href="https://www.linkedin.com/in/abvcreative" aria-label="LinkedIn"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M6 9h3v9H6V9zm1.5-4a1.7 1.7 0 1 1 0 3.4A1.7 1.7 0 0 1 7.5 5zM11 9h3v1.3c.6-.9 1.6-1.6 3.1-1.6 2.2 0 3.8 1.3 3.8 4.3V18h-3v-4.6c0-1.4-.6-2.2-1.8-2.2-1.1 0-2 .7-2 2.2V18h-3V9z" fill="currentColor"/></svg></a>
+              <a href="https://bsky.app/profile/abvx.xyz" aria-label="Bluesky"><svg viewBox="0 0 24 24" role="img" aria-hidden="true"><path d="M12 6c2.6-2.4 6-3.4 6-1.1 0 2.5-2.2 4.2-4.6 5.2 2.4 1 4.6 2.7 4.6 5.2 0 2.3-3.4 1.3-6-1.1-2.6 2.4-6 3.4-6 1.1 0-2.5 2.2-4.2 4.6-5.2C8.2 9.1 6 7.4 6 4.9 6 2.6 9.4 3.6 12 6z" fill="currentColor"/></svg></a>
             </div>
           </div>
         </footer>
