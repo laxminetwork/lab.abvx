@@ -4,17 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>SET | ABVX Lab</title>
-    <meta name="description" content="Thin GitHub Action orchestrator for presets, repo-docs, and site-aware agentsgen flows." />
+    <meta name="description" content="Thin GitHub Action orchestrator for presets, repo-docs, site-aware agentsgen flows, and repo-local ID hooks." />
     <link rel="canonical" href="https://lab.abvx.xyz/tools/set/" />
     <meta property="og:title" content="SET | ABVX Lab" />
-    <meta property="og:description" content="Thin GitHub Action orchestrator for presets, repo-docs, and site-aware agentsgen flows." />
+    <meta property="og:description" content="Thin GitHub Action orchestrator for presets, repo-docs, site-aware agentsgen flows, and repo-local ID hooks." />
     <meta property="og:url" content="https://lab.abvx.xyz/tools/set/" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://lab.abvx.xyz/assets/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="../../assets/asciitheme.css?v20260319d" />
     <link rel="stylesheet" href="../../assets/styles.css?v20260320a" />
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SET","url":"https://lab.abvx.xyz/tools/set/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Thin GitHub Action orchestrator for presets, repo-docs, and site-aware agentsgen flows."}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SET","url":"https://lab.abvx.xyz/tools/set/","applicationCategory":"DeveloperApplication","operatingSystem":"Cross-platform","description":"Thin GitHub Action orchestrator for presets, repo-docs, site-aware agentsgen flows, and repo-local ID hooks."}</script>
   </head>
   <body>
     <div class="site-shell">
@@ -39,7 +39,7 @@
           <section class="hero-panel">
             <span class="kicker">ABVX tool</span>
             <h1>SET</h1>
-            <p class="lead">Thin GitHub Action orchestrator for presets, repo-docs, and site-aware agentsgen flows.</p>
+            <p class="lead">Thin GitHub Action orchestrator for presets, repo-docs, site-aware agentsgen flows, and repo-local ID hooks.</p>
             <div class="tag-list"><span class="tag">GitHub Action</span><span class="tag">Orchestrator</span><span class="tag">Registry</span><span class="tag">Review</span></div>
           </section>
           <section class="page-panel page-meta">
@@ -47,6 +47,7 @@
             <ul class="bullet-list">
               <li>Resolves a preset into a small, explicit <code>SET</code> run plan for a repo.</li>
               <li>Runs thin agentsgen flows such as init, pack, check, repomap, snippets, analyze, meta, and optional proof-loop artifacts.</li>
+              <li>Runs repo-local <code>ID</code> integration hooks for compatible repositories: <code>pre_task</code> before orchestration and <code>weekly_review</code> after it.</li>
               <li>Exports reviewable planning payloads so registry config and repo workflows stay auditable.</li>
             </ul>
           </section>
@@ -67,7 +68,7 @@
     path: "."
 
 python3 scripts/plan_config_apply.py --all</code></pre>
-            <p class="small-note">Presets: <code>minimal</code>, <code>repo-docs</code>, <code>site-ai</code>. Proof-loop is supported through <code>proof_loop</code> + <code>proof_task_id</code>.</p>
+            <p class="small-note">Presets: <code>minimal</code>, <code>repo-docs</code>, <code>site-ai</code>. Proof-loop is supported through <code>proof_loop</code> + <code>proof_task_id</code>. ID hooks are supported through <code>id_enabled</code>, <code>id_owner_id</code>, <code>id_pre_task</code>, and <code>id_weekly_review</code>.</p>
           </section>
         </main>
         <footer class="footer footer--lab">
