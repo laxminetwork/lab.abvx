@@ -162,11 +162,27 @@ a:hover { text-decoration: underline; }
   gap: 16px;
 }
 
+.lab-b-tool-card-link {
+  display: block;
+  color: inherit;
+}
+
+.lab-b-tool-card-link:hover {
+  text-decoration: none;
+}
+
+.lab-b-tool-card-link:hover .lab-b-tool-card,
+.lab-b-tool-card-link:focus-visible .lab-b-tool-card {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 46px rgba(61, 97, 184, 0.13);
+}
+
 .lab-b-tool-card {
   min-height: 190px;
   padding: 24px 24px 22px;
   border-radius: 22px;
   background: linear-gradient(180deg, #f4f7ff 0%, #eff3ff 100%);
+  transition: transform 160ms ease, box-shadow 160ms ease;
 }
 
 .lab-b-tool-card.featured-set {
@@ -1078,4 +1094,24 @@ a:hover { text-decoration: underline; }
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+
+.lab-b-ledger-link {
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 140ms ease, transform 140ms ease;
+}
+
+.lab-b-ledger-link:hover,
+.lab-b-ledger-link:focus-visible {
+  background: rgba(95, 128, 207, 0.08);
+  transform: translateX(4px);
+}
+
+.lab-b-ledger-link:hover .lab-b-ledger-name strong,
+.lab-b-ledger-link:focus-visible .lab-b-ledger-name strong {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.14em;
 }
