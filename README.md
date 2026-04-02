@@ -1,7 +1,7 @@
 # ABVX Lab
 
 A static hub and read-only control plane for ABVX developer tools.
-The home page acts as an editorial index: `SET` is the orchestration entrypoint, `ID` is the portable profile-and-hook layer, the control plane is summarized in a compact snapshot, and the tool catalog is grouped by role.
+The live site now uses the `alt-b` production shell: `SET` is the orchestration entrypoint, `ID` is the portable profile-and-hook layer, the home page opens with a tracked-repos snapshot plus a quieter supporting-tools directory, and tool pages share the same product-sheet layout.
 
 Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
@@ -9,9 +9,10 @@ Live: [lab.abvx.xyz](https://lab.abvx.xyz/)
 
 ## Home page structure
 
-- `SET` is featured first as the main orchestration entrypoint for the ecosystem.
-- The control plane is summarized as a compact table: repo, preset, last run, sync state, and queue.
-- Detailed read-only surfaces live below that summary:
+- `SET`, `agentsgen`, `ID`, and `repomap` are featured first as the visible core stack.
+- The control plane is summarized as a tracked-repos ledger with queue state, then followed by a quieter directory of supporting tools and secondary surfaces.
+- Featured tiles and tracked repo rows are clickable and route to internal tool pages or GitHub where no first-class internal surface exists.
+- Detailed read-only surfaces still live below that summary:
   - [What to review next](https://lab.abvx.xyz/planning/)
   - [Proof queue](https://lab.abvx.xyz/proof/)
   - [Repo cards](https://lab.abvx.xyz/repos/)
@@ -122,11 +123,11 @@ They still ship together as one package: `agentsgen`.
 
 ### Visual system
 
-ABVX Lab uses a minimal static setup with vendored AsciiTheme assets:
+ABVX Lab currently uses the `alt-b` production shell:
 
-- `docs/assets/asciitheme.css` is the base preset
-- `docs/assets/ascii-theme.js` provides the theme toggle
-- Home page styling now lives inline in `docs/index.html` to keep the editorial layout self-contained
+- `docs/assets/lab-alt-b.css` is the live stylesheet for the home page and tool pages
+- Control-plane pages (`planning`, `proof`, `registry`, `repos`, `status`) also use `lab-alt-b.css` through a compatibility layer over their existing snapshot markup
+- The old AsciiTheme assets remain in the repo for older/internal surfaces, but they are no longer the main live shell for the public catalog
 
 ### How to add a new tool
 
